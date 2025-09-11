@@ -1,39 +1,42 @@
-# DIO - Trilha .NET - Fundamentos
+# Trilha .NET: Fundamentos e Desafios
 
-[www.dio.me](https://www.dio.me/)
+<p align="center">
+  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=blueviolet"></a>
+  <a href="./LICENSE"><img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge"/></a>
+  <img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge">
+</p>
 
-## Desafio de projeto
+> Repositório dedicado ao aprendizado e desenvolvimento de desafios da trilha de formação .NET da [Digital Innovation One](https://www.dio.me/).
 
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de fundamentos, da trilha .NET da DIO.
+## 🎯 Sobre o Repositório
 
-## Contexto
+Este espaço documenta minha jornada de estudos na trilha de desenvolvimento .NET. Ele serve como um portfólio, contendo as soluções para os desafios propostos, organizados em projetos individuais. O objetivo é aplicar conceitos fundamentais e avançados da plataforma .NET e da linguagem C#, seguindo as melhores práticas de desenvolvimento de software.
 
-Você foi contratado para construir um sistema para um estacionamento, que será usado para gerenciar os veículos estacionados e realizar suas operações, como por exemplo adicionar um veículo, remover um veículo (e exibir o valor cobrado durante o período) e listar os veículos.
+## 📂 Projetos Desenvolvidos
 
-## Proposta
+Abaixo está a lista de projetos contidos neste repositório. Cada um representa um desafio específico da trilha de aprendizado.
 
-Você precisará construir uma classe chamada "Estacionamento", conforme o diagrama abaixo:
-![Diagrama de classe estacionamento](diagrama_classe_estacionamento.png)
+| Projeto                               | Descrição                                                                                             | Status        |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------- |
+| 🅿️ [**Parking**](./Parking/)          | Uma aplicação de console para gerenciar a entrada e saída de veículos em um estacionamento.           | ⏳ Pendente   |
+| ...                                   | *Novos desafios serão adicionados aqui.*                                                              | 🚧 Em breve   |
+| ...                                   | *example*                                                                                             | ✅ Concluído  |
 
-A classe contém três variáveis, sendo:
+## 🤝 Como Contribuir
 
-- **precoInicial**: Tipo decimal. É o preço cobrado para deixar seu veículo estacionado.
-- **precoPorHora**: Tipo decimal. É o preço por hora que o veículo permanecer estacionado.
-- **veiculos**: É uma lista de string, representando uma coleção de veículos estacionados. Contém apenas a placa do veículo.
+Este é um projeto de código aberto e ficamos felizes em receber contribuições! Se você tem interesse em ajudar, seja corrigindo bugs, propondo novas funcionalidades ou melhorando a documentação, sua ajuda é muito bem-vinda.
 
-A classe contém três métodos, sendo:
+1. Leia nosso [**Guia de Contribuição**](./.github/CONTRIBUTING.md) para entender o processo.
+2. Observe nosso [**Código de Conduta**](./.github/CODE_OF_CONDUCT.md) para garantir um ambiente colaborativo e respeitoso.
+3. Procure por [issues abertas](./issues) para encontrar tarefas em que você pode ajudar.
 
-- **AdicionarVeiculo**: Método responsável por receber uma placa digitada pelo usuário e guardar na variável **veiculos**.
-- **RemoverVeiculo**: Método responsável por verificar se um determinado veículo está estacionado, e caso positivo, irá pedir a quantidade de horas que ele permaneceu no estacionamento. Após isso, realiza o seguinte cálculo: **precoInicial** * **precoPorHora**, exibindo para o usuário.
-- **ListarVeiculos**: Lista todos os veículos presentes atualmente no estacionamento. Caso não haja nenhum, exibir a mensagem "Não há veículos estacionados".
+## 📝 Licença
 
-Por último, deverá ser feito um menu interativo com as seguintes ações implementadas:
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-1. Cadastrar veículo
-2. Remover veículo
-3. Listar veículos
-4. Encerrar
+Copyright © 2025 - Heviane Bastos
 
-## Solução
+## :octocat: Desenvolvedora
 
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+| [<img src="https://heviane.github.io/image-gallery/Profile-heviane-v2.PNG" width=115><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
+| :---: |
