@@ -18,9 +18,9 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 
 | Projeto                               | Descrição                                                                                             | Status        |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------- |
-| 🅿️ [**Parking**](./Parking/)          | Uma aplicação de console para gerenciar a entrada e saída de veículos em um estacionamento.           | ⏳ Pendente   |
+| 🅿️ [**Parking**](./Parking/)          | Criar os testes                                                                                       | ⏳ Pendente   |
+| 🅿️ [**Parking**](./Parking/)          | Uma aplicação de console para gerenciar a entrada e saída de veículos em um estacionamento.           | ✅ Concluído  |
 | ...                                   | *Novos desafios serão adicionados aqui.*                                                              | 🚧 Em breve   |
-| ...                                   | *example*                                                                                             | ✅ Concluído  |
 
 ## 🤝 Como Contribuir
 
