@@ -12,32 +12,18 @@
 
 > Status do Projeto: :heavy_check_mark: :warning: (em desenvolvimento)
 
-## Tópicos
-
-:small_blue_diamond: [Descrição do projeto](#descrição-do-projeto)
-:small_blue_diamond: [Funcionalidades](#funcionalidades)
-:small_blue_diamond: [Pré-requisitos](#pré-requisitos)
-:small_blue_diamond: [Como rodar a aplicação](#como-rodar-a-aplicação-arrow_forward)
-:small_blue_diamond: [Tarefas em aberto](#tarefas-em-aberto)
-:small_blue_diamond: [Desenvolvedores e Contribuintes](#desenvolvedores-e-contribuintes-octocat)
-:small_blue_diamond: [Licença](#licença)
-<!-->:small_blue_diamond: [Deploy da Aplicação](#deploy-da-aplicação-dash)-->
-
 ## Descrição do projeto
 
 <p align="justify">
 Sistema de estacionamento de veículos, usado para gerenciar os veículos estacionados e realizar suas operações, como por exemplo: adicionar um veículo, remover um veículo (e exibir o valor cobrado durante o período) e listar os veículos.
-
-- V1.0.0: Sistema Desktop (Console)
-
 </p>
 
 ## Funcionalidades
 
-:heavy_check_mark: Cadastrar veículo
-:heavy_check_mark: Remover veículo
-:heavy_check_mark: Cobrar valor do período de permanência
-:heavy_check_mark: Listar veículos
+- :heavy_check_mark: Cadastrar veículo
+- :heavy_check_mark: Remover veículo
+- :heavy_check_mark: Cobrar valor do período de permanência
+- :heavy_check_mark: Listar veículos
 
 <!-- 
 ## Layout ou Deploy da Aplicação :dash:
@@ -119,10 +105,10 @@ Em [issues](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/is
 
 ## Tarefas em aberto
 
-:memo: Implementar testes
-:memo: Implementar o uso de banco de dados
-:memo: Implementar autenticação
-:memo: Criar versão web (desenvolvimento de UI, deploy)
+- :memo: Implementar testes
+- :memo: Implementar o uso de banco de dados
+- :memo: Implementar autenticação
+- :memo: Criar versão web (desenvolvimento de UI, deploy)
 
 ## Desenvolvedores e Contribuintes :octocat:
 
