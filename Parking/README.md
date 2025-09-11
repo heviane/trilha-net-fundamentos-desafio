@@ -10,7 +10,7 @@
 </p>
  -->
 
-> Status do Projeto: :heavy_check_mark: :warning: (em desenvolvimento)
+> Status do Projeto: ✅ **v1.0.0 Concluída** | 🚧 **Próximos Passos em Desenvolvimento**
 
 ## Descrição do projeto
 
@@ -49,14 +49,29 @@ git clone git@github.com:heviane-studies/trilha-net-fundamentos-desafio.git
 
 ## Entre na pasta do projeto:
 cd trilha-net-fundamentos-desafio/Parking 
+```
 
-## Execute a aplicação: 
+### Rodar a aplicação sem Docker
+
+```bash
 dotnet run
 ```
 
-<!-- 
-TODO: Dica: clone o próprio projeto e verfique se o passo a passo funciona.
--->
+### Rodar a aplicação com Docker
+
+Com o Docker instalado e executando, você pode construir e executar a aplicação em um ambiente containerizado, garantindo consistência e isolamento.
+
+```bash
+# construa a imagem Docker: 
+docker build -t parking-app .
+
+# Execute o container de forma interativa:
+docker run -it --rm parking-app
+```
+
+> OBS: O comando docker run utiliza as flags `-it` para alocar um terminal interativo, essencial para uma aplicação de console, e `--rm` para remover o container automaticamente após a sua execução.
+
+<!-- TODO: Dica: clone o próprio projeto e verfique se o passo a passo funciona. -->
 
 <!--
 ## Como rodar os testes
@@ -103,14 +118,21 @@ Liste as tecnologias utilizadas no projeto que **não** forem reconhecidas pelo 
 Em [issues](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues) foram abertos alguns problemas gerados durante o desenvolvimento desse projeto e como foram resolvidos.
 -->
 
-## Tarefas em aberto
+## :memo: Próximos passos
 
-- :memo: Implementar testes
-- :memo: Implementar o uso de banco de dados
-- :memo: Implementar autenticação
-- :memo: Criar versão web (desenvolvimento de UI, deploy)
+- [x] Implementar o uso de **containers** com Docker.
+- [ ] Implementar **testes**
+- [ ] Implementar o uso de **banco de dados**
+- [ ] Implementar **autenticação**
+- [ ] Criar uma **versão web**
+  - [ ] Designer: Identidade visual, design system, wireframe, protótipo, etc.
+  - [ ] Frontend: User interface.
+- [ ] Criar uma **versão mobile** para android.
+- [ ] Criar uma **versão mobile** para ios.
+- [ ] Criar uma **versão mobile** para tablet.
+- [ ] Criar uma **versão mobile** para desktop.
 
-## Desenvolvedores e Contribuintes :octocat:
+## :octocat: Desenvolvedores e Contribuintes
 
 | [<img src="https://heviane.github.io/image-gallery/Profile-heviane-v2.PNG" width=115><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
 | :---: |
