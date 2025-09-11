@@ -1,4 +1,4 @@
-# Código de Conduta - Templates para Projetos de Software
+# Código de Conduta
 
 ## Nosso Compromisso
 

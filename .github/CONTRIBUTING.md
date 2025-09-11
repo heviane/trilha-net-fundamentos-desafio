@@ -1,6 +1,6 @@
 # 🤝 Como Contribuir
 
-Olá, contribuidor(a). Ficamos muito felizes com seu interesse em contribuir com a **Trilha .NET Fundamentos e Desáfios**, sua participação é muito bem-vinda!
+Olá, contribuidor(a). Ficamos muito felizes com seu interesse em contribuir com o **aprendizado e desenvolvimento de desafios da trilha de formação .NET da [Digital Innovation One](https://www.dio.me/)**, sua participação é muito bem-vinda!
 
 Ao participar, você concorda em seguir nosso [Código de Conduta](./CODE_OF_CONDUCT.md). É importante notar também que todas as contribuições que você fizer serão disponibilizadas sob a [Licença MIT](../LICENSE) do projeto.
 
