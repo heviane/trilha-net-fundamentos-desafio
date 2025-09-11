@@ -22,10 +22,10 @@ Antes de tudo, certifique-se de que a branch `main` está estável e contém tod
 
 1. Faça um `pull` da `main` para garantir que você tem a versão mais recente:
 
-```bash
-git checkout main
-git pull origin main
-```
+    ```bash
+    git checkout main
+    git pull origin main
+    ```
 
 2. Verifique se todos os **Pull Requests** necessários foram mesclados.
 
