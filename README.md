@@ -1,10 +1,10 @@
-# Trilha .NET: Fundamentos e Desafios
+# 🎓 Trilha .NET: Fundamentos e Desafios
 
 <p align="center">
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml/badge.svg" /></a>
   <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=blueviolet"></a>
   <a href="./LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=blue"></a>
-  <!--<img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge">-->
+  <img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=orange">
 </p>
 
 > Repositório dedicado ao aprendizado e desenvolvimento de desafios da trilha de formação .NET da [Digital Innovation One](https://www.dio.me/).
@@ -17,10 +17,10 @@ Este espaço documenta minha jornada de estudos na trilha de desenvolvimento .NE
 
 Abaixo está a lista de projetos contidos neste repositório. Cada um representa um desafio específico da trilha de aprendizado.
 
-| Projeto                               | Descrição                                                                                             | Status        |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------- |
-| 🅿️ [**Parking**](./Parking/)          | Uma aplicação de console para gerenciar um estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído  |
-| ...                                   | *Novos desafios serão adicionados aqui.*                                                              | 🚧 Em breve   |
+| Projeto | Descrição | Status | Versão |
+| :--- | :--- | :---: | :---: |
+| 🅿️ [**Parking**](./Parking/) | Uma aplicação de console para gerenciar um estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído | [![Latest Release](https://img.shields.io/github/v/release/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=success)](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/releases) |
+| ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve | ... |
 
 ## 🤝 Como Contribuir
 
@@ -35,7 +35,7 @@ Este é um projeto de código aberto e ficamos felizes em receber contribuiçõe
 | [<img src="https://heviane.github.io/image-gallery/Profile-heviane-v2.PNG" width=115><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
 | :---: |
 
-## 📝 Licença
+## 📜 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 

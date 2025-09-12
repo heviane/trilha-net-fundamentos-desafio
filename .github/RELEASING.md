@@ -39,24 +39,6 @@ A documentação deve refletir o estado da nova versão.
     - Adicione a data da release no formato `AAAA-MM-DD`.
     - Adicione uma nova seção `[Unreleased]` vazia no topo do arquivo para futuras alterações.
 
-    **Exemplo:**
-
-    ```diff
-    --- a/CHANGELOG.md
-    +++ b/CHANGELOG.md
-    @@ -7,6 +7,10 @@
-        
-        ## [Unreleased]
-        
-    +### Added
-    + - ...
-    +
-        ## [1.0.0] - 2024-05-21
-        
-        ### Added
-        - ...
-    ```
-
 2. **Atualize o `README.md` (se necessário)**:
     - Verifique se o status dos projetos ou outras informações no `README.md` principal precisam ser atualizados para refletir a conclusão de uma etapa.
 

@@ -1,29 +1,34 @@
-# Estacionamento de veículos
+ # 🅿️ Estacionamento de veículos
 
-<!--
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=react&message=framework&color=blue&style=for-the-badge&logo=REACT"/>
-  <img src="https://img.shields.io/static/v1?label=Netlify&message=deploy&color=blue&style=for-the-badge&logo=netlify"/>
-  <img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge"/>
-  <img src="http://img.shields.io/static/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
-  <img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge"/>
-</p>
- -->
-
-> Status do Projeto: ✅ **v1.0.0 Concluída** | 🚧 **Próximos Passos em Desenvolvimento**
-
-## Descrição do projeto
-
-<p align="justify">
-Sistema de estacionamento de veículos, usado para gerenciar os veículos estacionados e realizar suas operações, como por exemplo: adicionar um veículo, remover um veículo (e exibir o valor cobrado durante o período) e listar os veículos.
+  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml/badge.svg" /></a>
+  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=success" /></a>
+  <a href="../LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=blue" /></a>
+  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=blueviolet" /></a>
+  <img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square" />
 </p>
 
-## Funcionalidades
+## 📋 Descrição do projeto
 
-- :heavy_check_mark: Cadastrar veículo
-- :heavy_check_mark: Remover veículo
-- :heavy_check_mark: Cobrar valor do período de permanência
-- :heavy_check_mark: Listar veículos
+Este projeto é uma aplicação de console em .NET que simula um sistema de gerenciamento de estacionamento. Desenvolvido como um desafio prático, ele aplica conceitos fundamentais de C# e da plataforma .NET, incluindo programação orientada a objetos, manipulação de coleções e interação com o usuário via terminal.
+
+O sistema permite realizar operações essenciais como registrar a entrada de veículos, processar a saída com cálculo de custos e listar os veículos presentes, servindo como uma base sólida para a implementação de funcionalidades mais avançadas.
+
+## ✨ Funcionalidades
+
+A aplicação oferece as seguintes funcionalidades essenciais para a gestão de um estacionamento:
+
+- **Cadastrar Veículo**:
+  - Permite registrar um novo veículo no estacionamento através de sua placa.
+  - Inclui uma validação para impedir o cadastro de placas duplicadas, garantindo a integridade dos dados.
+
+- **Remover Veículo e Calcular Custo**:
+  - Remove um veículo registrado do estacionamento.
+  - Solicita a quantidade de horas que o veículo permaneceu estacionado.
+  - Calcula e exibe o valor total a ser pago, com base no preço inicial e no preço por hora definidos no início da execução.
+
+- **Listar Veículos**:
+  - Exibe uma lista com as placas de todos os veículos que estão atualmente no estacionamento.
 
 <!-- 
 ## Layout ou Deploy da Aplicação :dash:
@@ -35,11 +40,19 @@ Sistema de estacionamento de veículos, usado para gerenciar os veículos estaci
 Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
 -->
 
-## Pré-requisitos
+## 🛠️ Pré-requisitos
 
-:warning: [.NET 9.0](https://dotnet.microsoft.com/en-us/download)
+Para clonar e executar este projeto localmente, você precisará ter as seguintes ferramentas instaladas em sua máquina:
 
-## Como rodar a aplicação :arrow_forward:
+- **[.NET 9.0 SDK](https://dotnet.microsoft.com/en-us/download)**: Essencial para compilar e executar a aplicação e os testes.
+- **[Git](https://git-scm.com/)**: Necessário para clonar o repositório.
+- **[Docker](https://www.docker.com/products/docker-desktop/)**: Opcional, mas necessário para construir e executar a aplicação via container.
+
+  ### Recomendado
+
+  - Um editor de código como o **[Visual Studio Code](https://code.visualstudio.com/)** com a extensão [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit).
+
+## :arrow_forward: Como rodar a aplicação
 
 No terminal, execute os comandos abaixo:
 
@@ -73,15 +86,11 @@ docker run -it --rm parking-app
 
 <!-- TODO: Dica: clone o próprio projeto e verfique se o passo a passo funciona. -->
 
+## 🧪 Como rodar os testes
+
+Para garantir a qualidade e o correto funcionamento do projeto, a aplicação conta com uma suíte de testes unitários. As instruções detalhadas para executar os testes estão disponíveis no [**README do projeto de testes**](../Parking.Tests/README.md#4-como-executar-os-testes-).
+
 <!--
-## Como rodar os testes
-
-Coloque um passo a passo para executar os testes
-
-```bash
-npm test, rspec, etc 
-```
-
 ## Casos de Uso
 
 Explique com mais detalhes como a sua aplicação poderia ser utilizada. O uso de **gifs** aqui seria bem interessante.
@@ -148,7 +157,7 @@ Em [issues](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/is
 | [<img src="https://heviane.github.io/image-gallery/Profile-heviane-v2.PNG" width=115><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
 | :---: |
 
-## Licença
+## 📜 Licença
 
 The [MIT License](../LICENSE) (MIT)
 
