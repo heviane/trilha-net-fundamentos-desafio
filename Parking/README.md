@@ -121,7 +121,18 @@ Em [issues](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/is
 ## :memo: Próximos passos
 
 - [x] Implementar o uso de **containers** com **Docker**.
+  - Garante um ambiente de execução consistente, portátil e simplifica o setup para novos desenvolvedores.
+  - Isola a aplicação e suas dependências, evitando conflitos com o ambiente da máquina hospedeira.
+  - Utiliza um `Dockerfile` multi-stage para criar uma imagem final leve e otimizada, contendo apenas o necessário para a execução.
 - [X] Implementar **projeto de testes unitários** com **XUnit**.
+  - Garante a qualidade, robustez e manutenibilidade da lógica de negócio.
+  - Facilita futuras manutenções e refatorações, garantindo que o comportamento esperado não seja quebrado.
+  - Exigiu a refatoração da aplicação para separar responsabilidades (SoC), uma prática fundamental da arquitetura de software limpa.
+- [X] Implementar **Integração Contínua (CI)** com **GitHub Actions**.
+  - Garante que os testes sejam executados automaticamente toda vez que um novo código é enviado para o repositório (a cada `push` ou em cada `Pull Request`).
+  - Impede código com bugs ou que quebre funcionalidades existentes seja integrado à branch principal (main).
+  - Desenvolvedores e contribuidores sabem imediatamente se uma alteração causou um problema.
+  - Criar um workflow que compila o projeto e executa o `dotnet test`.
 - [ ] Implementar o uso de **banco de dados**
 - [ ] Implementar **autenticação**
 - [ ] Criar uma **versão web**

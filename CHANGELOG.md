@@ -8,6 +8,8 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-09-12
+
 ### Added
 
 - **`Parking/`**: Adicionada containerização com **Docker** para a aplicação.
@@ -18,6 +20,10 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
   - **Motivo**: Garantir a qualidade, robustez e manutenibilidade da lógica de negócio.
   - **Alteração**: Criado o projeto `Parking.Tests` e implementados testes para os métodos `AdicionarVeiculo` e `RemoverVeiculo`, cobrindo cenários de sucesso e de erro.
 
+- **`.github/workflows/`**: Adicionado workflow de **Integração Contínua (CI)** com **GitHub Actions**.
+  - **Motivo**: Automatizar a compilação e a execução dos testes a cada `push` ou `pull request`, garantindo a qualidade do código e fornecendo feedback rápido sobre as alterações.
+  - **Alteração**: Criado o arquivo `dotnet-ci.yml` que configura o ambiente .NET, restaura dependências, compila o projeto e executa a suíte de testes.
+
 ### Changed
 
 - **`Parking/Models/Estacionamento.cs`**: Refatorada a classe para ser testável (Separação de Responsabilidades).
@@ -26,10 +32,6 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 - **`Parking/Program.cs`**: Atualizado para consumir a classe `Estacionamento` refatorada.
   - **Impacto**: A camada de apresentação agora é responsável por capturar entradas do usuário, chamar a lógica de negócio e tratar os retornos/exceções para exibir mensagens apropriadas.
-
-### Removed
-
-- ...
 
 ## [1.0.0] - 2025-09-11
 

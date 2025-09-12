@@ -1,6 +1,7 @@
 # Trilha .NET: Fundamentos e Desafios
 
 <p align="center">
+  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml/badge.svg" /></a>
   <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=blueviolet"></a>
   <a href="./LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=blue"></a>
   <!--<img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge">-->
@@ -18,7 +19,7 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 
 | Projeto                               | Descrição                                                                                             | Status        |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------- |
-| 🅿️ [**Parking**](./Parking/)          | Uma aplicação de console para gerenciar um estacionamento, com testes unitários (xUnit) e suporte a Docker. | ✅ Concluído  |
+| 🅿️ [**Parking**](./Parking/)          | Uma aplicação de console para gerenciar um estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído  |
 | ...                                   | *Novos desafios serão adicionados aqui.*                                                              | 🚧 Em breve   |
 
 ## 🤝 Como Contribuir
