@@ -12,64 +12,61 @@ namespace Parking.Models
             this.precoPorHora = precoPorHora;
         }
 
-        public void AdicionarVeiculo()
+        public bool AdicionarVeiculo(string placa)
         {
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
-            string placa = Console.ReadLine();
-            // Verifica se o veículo já está estacionado (ignorando maiúsculas/minúsculas)
+            if (string.IsNullOrWhiteSpace(placa))
+            {
+                return false;
+            }
+
             if (veiculos.Any(v => v.Equals(placa, StringComparison.OrdinalIgnoreCase)))
             {
-                Console.WriteLine($"O veículo com a placa {placa} já está estacionado. Confira a lista de veículos.");
+                // Veículo já existe, não adiciona.
+                return false;
             }
-            else
-            {
-                veiculos.Add(placa);
-                Console.WriteLine("Veículo estacionado com sucesso!");
-            }
+
+            veiculos.Add(placa);
+            return true;
         }
 
-        public void RemoverVeiculo()
+        public decimal RemoverVeiculo(string placa, int horas)
         {
-            Console.WriteLine("Digite a placa do veículo para remover:");
-            string placa = Console.ReadLine();
-
-            // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            if (!VeiculoExiste(placa))
             {
-                int horas = 0;
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-
-                while (!int.TryParse(Console.ReadLine(), out horas) || horas <= 0)
-                {
-                    Console.WriteLine("Entrada inválida. Por favor, digite um número de horas maior que zero:");
-                }
-
-                decimal valorTotal = precoInicial + precoPorHora * horas;
-
-                veiculos.RemoveAll(v => v.Equals(placa, StringComparison.OrdinalIgnoreCase));
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: {valorTotal:C2}");
+                throw new InvalidOperationException("Veículo não encontrado. Confira se digitou a placa corretamente.");
             }
-            else
+
+            if (horas <= 0)
             {
-                Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+                throw new ArgumentException("A quantidade de horas deve ser um valor positivo.", nameof(horas));
             }
+
+            decimal valorTotal = precoInicial + precoPorHora * horas;
+
+            veiculos.RemoveAll(v => v.Equals(placa, StringComparison.OrdinalIgnoreCase));
+
+            return valorTotal;
         }
 
-        public void ListarVeiculos()
+        public IReadOnlyList<string> ListarVeiculos()
         {
-            // Verifica se há veículos no estacionamento
-            if (veiculos.Any())
+            // Retorna uma cópia somente leitura da lista para evitar modificações externas.
+            return veiculos.AsReadOnly();
+        }
+
+        /// <summary>
+        /// Verifica se um veículo, identificado pela placa, já está no estacionamento.
+        /// A verificação não diferencia maiúsculas de minúsculas.
+        /// </summary>
+        /// <param name="placa">A placa do veículo a ser verificada.</param>
+        /// <returns>Retorna `true` se o veículo estiver estacionado, caso contrário, `false`.</returns>
+        public bool VeiculoExiste(string placa)
+        {
+            if (string.IsNullOrWhiteSpace(placa))
             {
-                Console.WriteLine("Os veículos estacionados são:");
-                foreach (var veiculo in veiculos)
-                {
-                    Console.WriteLine(veiculo);
-                }
+                return false;
             }
-            else
-            {
-                Console.WriteLine("Não há veículos estacionados.");
-            }
+            return veiculos.Any(v => v.Equals(placa, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
