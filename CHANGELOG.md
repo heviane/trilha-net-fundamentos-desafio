@@ -14,9 +14,18 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
   - **Motivo**: Garantir um ambiente de execução consistente, portátil e simplificar o setup para novos desenvolvedores.
   - **Alteração**: Criados os arquivos `Dockerfile` (com build multi-stage) e `.dockerignore` para otimizar a construção da imagem.
 
+- **`Parking.Tests/`**: Adicionado projeto de testes unitários com **xUnit**.
+  - **Motivo**: Garantir a qualidade, robustez e manutenibilidade da lógica de negócio.
+  - **Alteração**: Criado o projeto `Parking.Tests` e implementados testes para os métodos `AdicionarVeiculo` e `RemoverVeiculo`, cobrindo cenários de sucesso e de erro.
+
 ### Changed
 
-- ...
+- **`Parking/Models/Estacionamento.cs`**: Refatorada a classe para ser testável (Separação de Responsabilidades).
+  - **Motivo**: Desacoplar a lógica de negócio da interface de usuário (Console) para permitir a criação de testes unitários automatizados.
+  - **Alteração**: Os métodos agora recebem dados como parâmetros e comunicam erros através de retornos (`bool`) ou exceções (`InvalidOperationException`, `ArgumentException`), em vez de interagir diretamente com o Console.
+
+- **`Parking/Program.cs`**: Atualizado para consumir a classe `Estacionamento` refatorada.
+  - **Impacto**: A camada de apresentação agora é responsável por capturar entradas do usuário, chamar a lógica de negócio e tratar os retornos/exceções para exibir mensagens apropriadas.
 
 ### Removed
 

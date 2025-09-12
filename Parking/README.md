@@ -120,8 +120,8 @@ Em [issues](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/is
 
 ## :memo: Próximos passos
 
-- [x] Implementar o uso de **containers** com Docker.
-- [ ] Implementar **testes**
+- [x] Implementar o uso de **containers** com **Docker**.
+- [X] Implementar **projeto de testes unitários** com **XUnit**.
 - [ ] Implementar o uso de **banco de dados**
 - [ ] Implementar **autenticação**
 - [ ] Criar uma **versão web**
