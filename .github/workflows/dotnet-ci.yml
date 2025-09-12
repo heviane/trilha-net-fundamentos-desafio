@@ -1,0 +1,40 @@
+# Nome do workflow que aparecerá na aba "Actions" do GitHub
+name: .NET CI
+
+# Define os gatilhos (eventos) que iniciam o workflow
+on:
+  # Executa em pushes para a branch 'main'
+  push:
+    branches: [ main ]
+  # Executa em pull requests direcionados à branch 'main'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Define um "trabalho" chamado 'build-and-test'
+  build-and-test:
+    # O tipo de máquina virtual que o trabalho será executado
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clona o seu repositório para a máquina virtual
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configura o ambiente .NET com a versão correta (9.0 Preview)
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      # 3. Restaura as dependências (NuGet) de todos os projetos na solução
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # 4. Compila a solução em modo Release para verificar se não há erros de compilação
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      # 5. Executa os testes unitários do projeto de testes
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
