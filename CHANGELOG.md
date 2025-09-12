@@ -10,7 +10,7 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ### Added
 
-- **`Parking/`**: Adicionada containerização com Docker para a aplicação.
+- **`Parking/`**: Adicionada containerização com **Docker** para a aplicação.
   - **Motivo**: Garantir um ambiente de execução consistente, portátil e simplificar o setup para novos desenvolvedores.
   - **Alteração**: Criados os arquivos `Dockerfile` (com build multi-stage) e `.dockerignore` para otimizar a construção da imagem.
 

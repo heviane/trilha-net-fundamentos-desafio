@@ -66,10 +66,10 @@ Com o Docker instalado e executando, você pode construir e executar a aplicaç�
 docker build -t parking-app .
 
 # Execute o container de forma interativa:
+# Flag -it para alocar um terminal interativo, essencial para uma aplicação de console
+# Flag --rm para remover o container automaticamente após a sua execução.
 docker run -it --rm parking-app
 ```
-
-> OBS: O comando docker run utiliza as flags `-it` para alocar um terminal interativo, essencial para uma aplicação de console, e `--rm` para remover o container automaticamente após a sua execução.
 
 <!-- TODO: Dica: clone o próprio projeto e verfique se o passo a passo funciona. -->
 
