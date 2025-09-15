@@ -32,7 +32,7 @@ Este é um projeto de código aberto e ficamos felizes em receber contribuiçõe
 
 ## :octocat: Desenvolvedores e Contribuintes
 
-| [<img src="https://heviane.github.io/image-gallery/Profile-heviane-v2.PNG" width=115><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
+| [<img width="80px" align="center" src="https://avatars.githubusercontent.com/heviane"/><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
 | :---: |
 
 ## 📜 Licença
