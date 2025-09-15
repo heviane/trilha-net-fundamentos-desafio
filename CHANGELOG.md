@@ -8,6 +8,16 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+### Added
+
+- **`Booking/`**: Adicionado novo projeto de desafio `Booking`.
+  - **Motivo**: Implementar um sistema de console para gerenciamento de reservas de hotel, aplicando conceitos de POO, coleções e tratamento de exceções.
+  - **Alteração**: Criado o projeto `Booking` com as classes `Pessoa`, `Suite` e `Reserva`. Implementada a lógica de negócio para cadastro de hóspedes, validação de capacidade e cálculo de diárias com desconto.
+
+- **`Booking.Tests/`**: Adicionado projeto de testes unitários para o `Booking`.
+  - **Motivo**: Garantir a qualidade e a robustez da lógica de negócio do sistema de hospedagem.
+  - **Alteração**: Criado o projeto `Booking.Tests` com xUnit e implementados testes para a classe `Reserva`, cobrindo cenários de sucesso, exceções e regras de desconto.
+
 ## [1.1.0] - 2025-09-12
 
 ### Added
@@ -41,6 +51,10 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
   - **`AdicionarVeiculo`**: Adicionado método para registrar a placa de um novo veículo na lista.
   - **`RemoverVeiculo`**: Adicionado método para remover um veículo, solicitar as horas de permanência e calcular o custo total.
   - **`ListarVeiculos`**: Adicionado método para exibir a lista de todos os veículos estacionados.
+
+- **`.gitignore`**: Adicionado arquivo `.gitignore` na raiz do projeto.
+  - **Motivo**: Manter o repositório limpo, ignorando arquivos gerados por build, IDEs e sistemas operacionais.
+  - **Alteração**: Criado um arquivo `.gitignore` padrão para projetos .NET, incluindo a regra para `.DS_Store`.
 
 ### Changed
 
