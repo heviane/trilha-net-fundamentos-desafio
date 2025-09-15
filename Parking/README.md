@@ -72,9 +72,11 @@ dotnet run
 
 Com o Docker instalado e executando, você pode construir e executar a aplicação em um ambiente containerizado, garantindo consistência e isolamento.
 
+**Importante**: Execute os comandos a partir da pasta raiz do repositório.
+
 ```bash
-# construa a imagem Docker: 
-docker build -t parking-app .
+# Construa a imagem Docker especificando o Dockerfile do projeto:
+docker build -t parking-app -f Parking/Dockerfile .
 
 # Execute o container de forma interativa:
 # Flag -it para alocar um terminal interativo, essencial para uma aplicação de console
