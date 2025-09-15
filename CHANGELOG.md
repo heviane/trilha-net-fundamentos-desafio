@@ -8,6 +8,14 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-09-14
+
+### Changed
+
+- **`.github/workflows/release-automation.yml`**: Aprimorado o workflow para anexar artefatos de build.
+  - **Motivo**: Fornecer executáveis prontos para uso (Linux, Windows, macOS) diretamente na página de release, melhorando a experiência do usuário final.
+  - **Alteração**: O workflow agora inclui passos para compilar os projetos `Parking` e `Booking` em modo `Release`, empacotar os resultados em arquivos `.zip` e anexá-los à release do GitHub.
+
 ## [1.2.0] - 2025-09-13
 
 ### Added
