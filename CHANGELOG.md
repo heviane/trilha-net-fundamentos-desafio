@@ -8,6 +8,28 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+## [1.4.0] - 2025-09-15
+
+### Added
+
+- **`SmartPhone/`**: Adicionado novo projeto de desafio `SmartPhone`.
+  - **Motivo**: Implementar um sistema de console que abstrai o conceito de um smartphone, aplicando conceitos de POO como herança e polimorfismo.
+  - **Alteração**: Criado o projeto `SmartPhone` com a classe base abstrata `Smartphone` e as implementações `Nokia` e `Iphone`.
+- **`SmartPhone.Tests/`**: Adicionado projeto de testes unitários para o `SmartPhone`.
+  - **Motivo**: Garantir a qualidade e o correto funcionamento das implementações do desafio.
+- **`.github/NEW_CHALLENGE_GUIDE.md`**: Adicionado guia para novos contribuidores.
+  - **Motivo**: Padronizar o processo de adição de novos desafios ao repositório, garantindo a consistência com os padrões de qualidade e automação.
+
+### Changed
+
+- **`Dockerfile`s**: Refatorados todos os `Dockerfile`s para simplificar e melhorar a manutenibilidade.
+  - **Motivo**: O padrão anterior exigia a edição de todos os `Dockerfile`s a cada novo projeto, tornando o processo tedioso e propenso a erros.
+  - **Alteração**: Os `Dockerfile`s agora copiam todo o código-fonte de uma vez (`COPY . .`), eliminando a necessidade de listar cada `.csproj` individualmente.
+- **`README.md`s**: Atualizados os arquivos de documentação principal e dos projetos.
+  - **Alteração**: Adicionada seção de créditos à DIO, corrigidos os comandos de build do Docker e incluído o novo projeto `SmartPhone` na documentação.
+- **`.github/workflows/release-automation.yml`**: Atualizado o workflow de release.
+  - **Alteração**: O workflow agora inclui o projeto `SmartPhone` no processo de build e empacotamento de artefatos para as releases.
+
 ## [1.3.0] - 2025-09-14
 
 ### Changed
