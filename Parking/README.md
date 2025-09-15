@@ -1,10 +1,10 @@
  # 🅿️ Estacionamento de veículos
 
 <p align="center">
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml/badge.svg" /></a>
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=success" /></a>
-  <a href="../LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=blue" /></a>
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=blueviolet" /></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://github.com/heviane/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml/badge.svg" /></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/heviane/trilha-net-fundamentos-desafio?style=flat-square&color=success" /></a>
+  <a href="../LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane/trilha-net-fundamentos-desafio?style=flat-square&color=blue" /></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane/trilha-net-fundamentos-desafio?style=flat-square&color=blueviolet" /></a>
   <img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square" />
 </p>
 
@@ -58,15 +58,16 @@ No terminal, execute os comandos abaixo:
 
 ```bash
 ## Clone o projeto:
-git clone git@github.com:heviane-studies/trilha-net-fundamentos-desafio.git
+git clone git@github.com:heviane/trilha-net-fundamentos-desafio.git
 
-## Entre na pasta do projeto:
-cd trilha-net-fundamentos-desafio/Parking 
+## Entre na pasta do repositório:
+cd trilha-net-fundamentos-desafio
 ```
 
 ### Rodar a aplicação sem Docker
 
 ```bash
+cd Parking
 dotnet run
 ```
 
@@ -88,73 +89,11 @@ docker run -it --rm parking-app
 
 ## 🧪 Como rodar os testes
 
-Para garantir a qualidade e o correto funcionamento do projeto, a aplicação conta com uma suíte de testes unitários. As instruções detalhadas para executar os testes estão disponíveis no [**README do projeto de testes**](../Parking.Tests/README.md#4-como-executar-os-testes-).
-
-<!--
-## Casos de Uso
-
-Explique com mais detalhes como a sua aplicação poderia ser utilizada. O uso de **gifs** aqui seria bem interessante.
-
-Exemplo: Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tópico os dados necessários para acessá-la.
-
-## JSON :floppy_disk:
-
-### Usuários:
-
-|name|email|password|token|avatar|
-| -------- |-------- |-------- |-------- |-------- |
-|Lais Lima|laislima98@hotmail.com|lais123|true|https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS9-U_HbQAipum9lWln3APcBIwng7T46hdBA42EJv8Hf6Z4fDT3&usqp=CAU|
-
-...
-
-Se quiser, coloque uma amostra do banco de dados
-
-## Iniciando/Configurando banco de dados
-
-Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados
-
-## Linguagens, dependencias e libs utilizadas :books:
-
-- [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
-- [React PDF](https://react-pdf.org/)
-
-...
-
-Liste as tecnologias utilizadas no projeto que **não** forem reconhecidas pelo Github
-
-## Resolvendo Problemas :exclamation:
-
-Em [issues](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues) foram abertos alguns problemas gerados durante o desenvolvimento desse projeto e como foram resolvidos.
--->
-
-## :memo: Próximos passos
-
-- [x] Implementar o uso de **containers** com **Docker**.
-  - Garante um ambiente de execução consistente, portátil e simplifica o setup para novos desenvolvedores.
-  - Isola a aplicação e suas dependências, evitando conflitos com o ambiente da máquina hospedeira.
-  - Utiliza um `Dockerfile` multi-stage para criar uma imagem final leve e otimizada, contendo apenas o necessário para a execução.
-- [X] Implementar **projeto de testes unitários** com **XUnit**.
-  - Garante a qualidade, robustez e manutenibilidade da lógica de negócio.
-  - Facilita futuras manutenções e refatorações, garantindo que o comportamento esperado não seja quebrado.
-  - Exigiu a refatoração da aplicação para separar responsabilidades (SoC), uma prática fundamental da arquitetura de software limpa.
-- [X] Implementar **Integração Contínua (CI)** com **GitHub Actions**.
-  - Garante que os testes sejam executados automaticamente toda vez que um novo código é enviado para o repositório (a cada `push` ou em cada `Pull Request`).
-  - Impede código com bugs ou que quebre funcionalidades existentes seja integrado à branch principal (main).
-  - Desenvolvedores e contribuidores sabem imediatamente se uma alteração causou um problema.
-  - Criar um workflow que compila o projeto e executa o `dotnet test`.
-- [ ] Implementar o uso de **banco de dados**
-- [ ] Implementar **autenticação**
-- [ ] Criar uma **versão web**
-  - [ ] Designer: Identidade visual, design system, wireframe, protótipo, etc.
-  - [ ] Frontend: User interface.
-- [ ] Criar uma **versão mobile** para android.
-- [ ] Criar uma **versão mobile** para ios.
-- [ ] Criar uma **versão mobile** para tablet.
-- [ ] Criar uma **versão mobile** para desktop.
+Para garantir a qualidade e o correto funcionamento do projeto, a aplicação conta com uma suíte de testes unitários. As instruções detalhadas para executar os testes estão disponíveis no [README do projeto de testes](../Parking.Tests/README.md#4-como-executar-os-testes-).
 
 ## :octocat: Desenvolvedores e Contribuintes
 
-| [<img src="https://heviane.github.io/image-gallery/Profile-heviane-v2.PNG" width=115><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
+| [<img width="80px" align="center" src="https://avatars.githubusercontent.com/heviane"/><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
 | :---: |
 
 ## 📜 Licença

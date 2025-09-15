@@ -19,12 +19,12 @@ RUN dotnet restore "trilha-net-fundamentos-desafio.sln"
 COPY . .
 
 # Set the working directory to the project folder and publish
-WORKDIR "/src/Parking"
-RUN dotnet publish "Parking.csproj" -c Release -o /app/publish
+WORKDIR "/src/Booking"
+RUN dotnet publish "Booking.csproj" -c Release -o /app/publish --no-restore
 
 # Stage 2: Run
 # Use the .NET runtime image for the final, smaller image
 FROM mcr.microsoft.com/dotnet/runtime:9.0
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "Parking.dll"]
+ENTRYPOINT ["dotnet", "Booking.dll"]

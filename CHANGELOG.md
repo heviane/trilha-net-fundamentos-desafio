@@ -8,15 +8,25 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-09-13
+
 ### Added
 
 - **`Booking/`**: Adicionado novo projeto de desafio `Booking`.
   - **Motivo**: Implementar um sistema de console para gerenciamento de reservas de hotel, aplicando conceitos de POO, coleções e tratamento de exceções.
   - **Alteração**: Criado o projeto `Booking` com as classes `Pessoa`, `Suite` e `Reserva`. Implementada a lógica de negócio para cadastro de hóspedes, validação de capacidade e cálculo de diárias com desconto.
-
 - **`Booking.Tests/`**: Adicionado projeto de testes unitários para o `Booking`.
   - **Motivo**: Garantir a qualidade e a robustez da lógica de negócio do sistema de hospedagem.
   - **Alteração**: Criado o projeto `Booking.Tests` com xUnit e implementados testes para a classe `Reserva`, cobrindo cenários de sucesso, exceções e regras de desconto.
+- **`.github/workflows/dotnet-ci.yml`**: Adicionada etapa de coleta e publicação de cobertura de código (Code Coverage).
+  - **Motivo**: Fornecer uma métrica visual da qualidade dos testes e garantir que a lógica de negócio crítica esteja sendo validada.
+  - **Alteração**: O workflow de CI agora executa os testes com o `coverlet` para gerar um relatório de cobertura e o envia para o serviço Coveralls.io. Um badge de cobertura foi adicionado ao `README.md` principal.
+
+### Changed
+
+- **`Parking/Dockerfile`**: Refatorado para seguir o padrão "solution-aware".
+  - **Motivo**: Alinhar com as melhores práticas modernas, melhorar o cache de build do Docker e garantir consistência com outros projetos na solução.
+  - **Alteração**: O `Dockerfile` agora usa a raiz do repositório como contexto, copia todos os arquivos `.csproj` e a solução `.sln` antes de restaurar as dependências, otimizando a velocidade de build. O comando de build no `Parking/README.md` foi atualizado para refletir essa mudança.
 
 ## [1.1.0] - 2025-09-12
 

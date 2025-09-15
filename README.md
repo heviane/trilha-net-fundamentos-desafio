@@ -1,10 +1,11 @@
 # 🎓 Trilha .NET: Fundamentos e Desafios
 
 <p align="center">
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=blueviolet"></a>
-  <a href="./LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=blue"></a>
+  <a href="https://coveralls.io/github/heviane/trilha-net-fundamentos-desafio?branch=main"><img src="https://coveralls.io/repos/github/heviane/trilha-net-fundamentos-desafio/badge.svg?branch=main" alt="Coverage Status" /></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=blueviolet"></a>
+  <a href="./LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=blue"></a>
   <img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/heviane-studies/trilha-net-fundamentos-desafio?style=for-the-badge&color=orange">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=orange">
 </p>
 
 > Repositório dedicado ao aprendizado e desenvolvimento de desafios da trilha de formação .NET da [Digital Innovation One](https://www.dio.me/).
@@ -20,8 +21,27 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 | Projeto | Descrição | Status |
 | :--- | :--- | :---: |
 | 🅿️ [**Parking**](./Parking/) | Uma aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 🏨 [**Booking**](./Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | 🚧 Em desenvolvimento |
+| 🏨 [**Booking**](./Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
+
+## 🗺️ Roadmap e Padrões de Desenvolvimento
+
+Para garantir a qualidade, consistência e manutenibilidade de todos os desafios, cada projeto neste repositório deve seguir um conjunto de padrões de desenvolvimento.
+
+### Padrões de Qualidade por Projeto
+
+- ✅ **Testes Unitários**: Implementar uma suíte de testes com xUnit para validar a lógica de negócio das aplicações de console.
+- ✅ **Containerização**: Criar um `Dockerfile` para executar a aplicação em um ambiente isolado com Docker.
+- ✅ **Integração Contínua (CI)**: Configurar um workflow no GitHub Actions para compilar e testar o código automaticamente.
+
+### Funcionalidades Futuras
+
+Além dos padrões de qualidade, as seguintes funcionalidades estão no radar para serem exploradas em projetos futuros ou como evoluções dos desafios atuais:
+
+- [ ] Implementar o uso de **banco de dados** para persistência de dados.
+- [ ] Criar uma **versão web** das aplicações utilizando ASP.NET Core.
+- [ ] Explorar a criação de **APIs RESTful**.
+- [ ] Implementar mecanismos de **autenticação e autorização**.
 
 ## 🤝 Como Contribuir
 

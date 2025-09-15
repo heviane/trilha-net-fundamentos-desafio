@@ -1,10 +1,10 @@
 # 🏨 Sistema de Hospedagem
 
 <p align="center">
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml/badge.svg" /></a>
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=success" /></a>
-  <a href="../LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=blue" /></a>
-  <a href="https://github.com/heviane-studies/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=blueviolet" /></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://github.com/heviane/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml/badge.svg" /></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/heviane/trilha-net-fundamentos-desafio?style=flat-square&color=success" /></a>
+  <a href="../LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane/trilha-net-fundamentos-desafio?style=flat-square&color=blue" /></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane/trilha-net-fundamentos-desafio?style=flat-square&color=blueviolet" /></a>
   <img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square" />
 </p>
 
@@ -38,6 +38,7 @@ Para clonar e executar este projeto localmente, você precisará ter as seguinte
 
 - **[.NET 9.0 SDK](https://dotnet.microsoft.com/en-us/download)**: Essencial para compilar e executar a aplicação e os testes.
 - **[Git](https://git-scm.com/)**: Necessário para clonar o repositório.
+- **[Docker](https://www.docker.com/products/docker-desktop/)**: Opcional, mas necessário para construir e executar a aplicação via container.
 
   ### Recomendado
 
@@ -49,38 +50,46 @@ No terminal, execute os comandos abaixo:
 
 ```bash
 ## Clone o projeto:
-git clone git@github.com:heviane-studies/trilha-net-fundamentos-desafio.git
+git clone git@github.com:heviane/trilha-net-fundamentos-desafio.git
 
-## Entre na pasta do projeto:
-cd trilha-net-fundamentos-desafio/Booking
+## Entre na pasta do repositório:
+cd trilha-net-fundamentos-desafio
 ```
 
-### Rodar a aplicação
+### Rodar a aplicação sem Docker
 
 ```bash
+cd Booking
 dotnet run
 ```
 
+### Rodar a aplicação com Docker
+
+Com o Docker instalado e executando, você pode construir e executar a aplicação em um ambiente containerizado, garantindo consistência e isolamento.
+
+```bash
+# construa a imagem Docker: 
+docker build -t booking-app .
+
+# Execute o container de forma interativa:
+# Flag -it para alocar um terminal interativo, essencial para uma aplicação de console
+# Flag --rm para remover o container automaticamente após a sua execução.
+docker run -it --rm booking-app
+```
+
+<!-- TODO: Dica: clone o próprio projeto e verfique se o passo a passo funciona. -->
+
 ## 🧪 Como rodar os testes
 
-Para garantir a qualidade e o correto funcionamento do projeto, a aplicação conta com uma suíte de testes unitários. As instruções detalhadas para executar os testes estão disponíveis no [**README do projeto de testes**](../Booking.Tests/README.md#4-como-executar-os-testes-).
-
-## :memo: Próximos passos
-
-- [ ] Implementar o uso de **containers** com **Docker**.
-- [ ] Implementar **projeto de testes unitários** com **XUnit**.
-- [ ] Implementar **Integração Contínua (CI)** com **GitHub Actions**.
-- [ ] Implementar o uso de **banco de dados** para persistir as reservas.
-- [ ] Criar um menu interativo no `Program.cs` para o usuário final.
-- [ ] Criar uma **versão web** da aplicação.
+Para garantir a qualidade e o correto funcionamento do projeto, a aplicação conta com uma suíte de testes unitários. As instruções detalhadas para executar os testes estão disponíveis no [README do projeto de testes](../Booking.Tests/README.md#4-como-executar-os-testes-).
 
 ## :octocat: Desenvolvedores e Contribuintes
 
-| <img src="https://heviane.github.io/image-gallery/Profile-heviane-v2.PNG" width=115><br><sub>Heviane Bastos</sub> |
+| [<img width="80px" align="center" src="https://avatars.githubusercontent.com/heviane"/><br><sub>Heviane Bastos</sub>](https://github.com/heviane) |
 | :---: |
 
 ## 📜 Licença
 
-The MIT License (MIT)
+The [MIT License](../LICENSE) (MIT)
 
 Copyright :copyright: 2025 - Sistema de Hospedagem
