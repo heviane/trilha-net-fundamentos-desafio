@@ -18,9 +18,6 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 - **`Booking.Tests/`**: Adicionado projeto de testes unitários para o `Booking`.
   - **Motivo**: Garantir a qualidade e a robustez da lógica de negócio do sistema de hospedagem.
   - **Alteração**: Criado o projeto `Booking.Tests` com xUnit e implementados testes para a classe `Reserva`, cobrindo cenários de sucesso, exceções e regras de desconto.
-- **`.github/workflows/dotnet-ci.yml`**: Adicionada etapa de coleta e publicação de cobertura de código (Code Coverage).
-  - **Motivo**: Fornecer uma métrica visual da qualidade dos testes e garantir que a lógica de negócio crítica esteja sendo validada.
-  - **Alteração**: O workflow de CI agora executa os testes com o `coverlet` para gerar um relatório de cobertura e o envia para o serviço Coveralls.io. Um badge de cobertura foi adicionado ao `README.md` principal.
 
 ### Changed
 
