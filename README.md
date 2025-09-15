@@ -27,14 +27,20 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 
 Para garantir a qualidade, consistência e manutenibilidade de todos os desafios, cada projeto neste repositório deve seguir um conjunto de padrões de desenvolvimento.
 
-### Padrões de Qualidade ppara este Repositório e seus Projetos
+### Padrões de Qualidade adotados para este Repositório e seus Projetos
 
-- ✅ **Testes Unitários**: Implementar uma suíte de testes com xUnit para validar a lógica de negócio das aplicações de console.
-- ✅ **Containerização**: Criar um `Dockerfile` para executar a aplicação em um ambiente isolado com Docker.
-- ✅ **Integração Contínua (CI)**: Configurar um workflow no GitHub Actions para compilar e testar o código automaticamente.
-- ✅ **Release Automatizada**: Configurar um workflow para criar releases no GitHub automaticamente, anexando os executáveis compilados (artefatos) para Linux, Windows e macOS.
+- ✅ **Testes Unitários**: Implementar uma suíte de testes com **xUnit** para validar a lógica de negócio das aplicações de console.
+- ✅ **Containerização**: Criar um `Dockerfile` para executar a aplicação em um ambiente isolado com **Docker**.
+- ✅ **Integração Contínua (CI)**: Configurar um `workflow` no **GitHub Actions** para compilar e testar o código automaticamente.
+- ✅ **Release Automatizada**: Configurar um `workflow` para criar releases no GitHub automaticamente, anexando os executáveis compilados (artefatos) para Linux, Windows e macOS.
 
-### Funcionalidades Futuras
+### Padrões de Qualidade em análise para futuras implementações
+
+- 🚧 **Análise Estática (Linting)**: Implementar verificação de formatação e estilo de código no CI.
+- 🚧 **Cobertura de Testes**: Adicionar relatórios de cobertura de testes (ex: Codecov) ao workflow de CI.
+- 🚧 **Otimização de Build**: Refatorar o workflow de release para executar builds em paralelo, reduzindo o tempo de execução.
+
+### Funcionalidades em análise para futuras implementações
 
 Além dos padrões de qualidade, as seguintes funcionalidades estão no radar para serem exploradas em projetos futuros ou como evoluções dos desafios atuais:
 
