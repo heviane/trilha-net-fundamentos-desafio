@@ -24,11 +24,8 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      - name: Run tests and collect coverage
-        run: |
-          mkdir -p coverage
-          dotnet test Parking.Tests/Parking.Tests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=../coverage/parking.json
-          dotnet test Booking.Tests/Booking.Tests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=./coverage/parking.json /p:CoverletOutput=../coverage/coverage.cobertura.xml
+      - name: Run tests and collect merged coverage
+        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./coverage/coverage.cobertura.xml
 
       - name: Publish coverage to Coveralls.io
         uses: coverallsapp/github-action@v2
