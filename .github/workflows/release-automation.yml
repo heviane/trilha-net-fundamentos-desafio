@@ -1,0 +1,50 @@
+# .github/workflows/release-automation.yml
+
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*' # Dispara o workflow quando uma tag como v1.0.0 é enviada
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permissão necessária para criar a release
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get Release Notes from CHANGELOG
+        id: get_release_notes
+        run: |
+          # Extrai a versão da tag (ex: de "v1.2.0" para "1.2.0")
+          VERSION=$(echo "${{ github.ref_name }}" | sed 's/v//')
+
+          # Usa awk para extrair as notas da versão específica do CHANGELOG.md
+          # 1. Encontra a linha que começa com "## [VERSÃO]"
+          # 2. Começa a capturar o conteúdo a partir da linha seguinte
+          # 3. Para de capturar quando encontra a próxima linha que começa com "## ["
+          NOTES=$(awk -v ver="\[$VERSION\]" '
+            /^## / {
+              if (p) exit;
+              if ($2 == ver) p=1;
+              next
+            }
+            p' CHANGELOG.md)
+
+          # Formata a saída para ser usada em passos seguintes
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: ${{ steps.get_release_notes.outputs.notes }}
+          prerelease: false
