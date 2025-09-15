@@ -1,7 +1,6 @@
 # 🎓 Trilha .NET: Fundamentos e Desafios
 
 <p align="center">
-  <a href="https://coveralls.io/github/heviane/trilha-net-fundamentos-desafio?branch=main"><img src="https://coveralls.io/repos/github/heviane/trilha-net-fundamentos-desafio/badge.svg?branch=main" alt="Coverage Status" /></a>
   <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=blueviolet"></a>
   <a href="./LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=blue"></a>
   <img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge">

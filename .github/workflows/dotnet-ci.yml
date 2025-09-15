@@ -24,27 +24,5 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
-      - name: Run tests and collect coverage
-        run: |
-          # This multi-step approach is more explicit and robust.
-          # It generates separate reports for each test project and then merges them.
-          mkdir -p ./coverage
-
-          # Run Parking tests and generate a JSON report.
-          # The CWD for this command becomes Parking.Tests/, so paths are relative (`../`).
-          dotnet test Parking.Tests/Parking.Tests.csproj --no-build --verbosity normal \
-            /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=../coverage/parking.json
-
-          # Run Booking tests, merge with the Parking report, and generate the final Cobertura report.
-          # The CWD for this command becomes Booking.Tests/, so paths are relative (`../`).
-          dotnet test Booking.Tests/Booking.Tests.csproj --no-build --verbosity normal \
-            /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:MergeWith=../coverage/parking.json /p:CoverletOutput=../coverage/coverage.cobertura.xml
-
-      - name: Verify coverage file
-        run: ls -R ./coverage
-
-      - name: Publish coverage to Coveralls.io
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./coverage/coverage.cobertura.xml
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal
