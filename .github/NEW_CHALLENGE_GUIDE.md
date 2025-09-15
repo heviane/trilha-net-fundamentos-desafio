@@ -40,20 +40,37 @@ Para que o novo projeto seja incluído nos processos de CI/CD, é crucial atuali
 
 Adicione os novos arquivos `.csproj` ao `Dockerfile` para que a imagem possa ser construída corretamente.
 
-**Arquivo a ser modificado**: `Parking/Dockerfile`
+**Arquivo a ser incluido**: `Dockerfile`
 
-```diff
---- a/Parking/Dockerfile
-+++ b/Parking/Dockerfile
-@@ -8,6 +8,8 @@
- COPY ["Booking.Tests/Booking.Tests.csproj", "Booking.Tests/"]
- COPY ["Parking/Parking.csproj", "Parking/"]
- COPY ["Parking.Tests/Parking.Tests.csproj", "Parking.Tests/"]
-+COPY ["SmartPhone/SmartPhone.csproj", "SmartPhone/"]
-+COPY ["SmartPhone.Tests/SmartPhone.Tests.csproj", "SmartPhone.Tests/"]
- 
- # Restore dependencies for the entire solution
- RUN dotnet restore "trilha-net-fundamentos-desafio.sln"
+```dockerfile
+# Stage 1: Build
+# Use the .NET SDK image to build the application
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+# Copy solution and project files to restore dependencies
+# Copying them separately leverages Docker's layer caching.
+# The build context is expected to be the repository root.
+COPY ["trilha-net-fundamentos-desafio.sln", "."]
+COPY ["SmartPhone/SmartPhone.csproj", "SmartPhone/"]
+COPY ["SmartPhone.Tests/SmartPhone.Tests.csproj", "SmartPhone.Tests/"]
+
+# Restore dependencies for the entire solution
+RUN dotnet restore "trilha-net-fundamentos-desafio.sln"
+
+# Copy the rest of the source code into the container
+COPY . .
+
+# Set the working directory to the project folder and publish
+WORKDIR "/src/SmartPhone"
+RUN dotnet publish "SmartPhone.csproj" -c Release -o /app/publish --no-restore
+
+# Stage 2: Run
+# Use the .NET runtime image for the final, smaller image
+FROM mcr.microsoft.com/dotnet/runtime:9.0
+WORKDIR /app
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "SmartPhone.dll"]
 ```
 
 #### b) Workflow de Release
@@ -62,37 +79,32 @@ Atualize o workflow `release-automation.yml` para que ele compile e anexe os exe
 
 **Arquivo a ser modificado**: `.github/workflows/release-automation.yml`
 
-```diff
---- a/.github/workflows/release-automation.yml
-+++ b/.github/workflows/release-automation.yml
-@@ -26,6 +26,10 @@
-           dotnet publish ./Booking/Booking.csproj -c Release -r linux-x64 --self-contained true -o ./dist/Booking-linux-x64
-           dotnet publish ./Booking/Booking.csproj -c Release -r win-x64 --self-contained true -o ./dist/Booking-win-x64
-           dotnet publish ./Booking/Booking.csproj -c Release -r osx-x64 --self-contained true -o ./dist/Booking-osx-x64
-+
-+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r linux-x64 --self-contained true -o ./dist/SmartPhone-linux-x64
-+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r win-x64 --self-contained true -o ./dist/SmartPhone-win-x64
-+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r osx-x64 --self-contained true -o ./dist/SmartPhone-osx-x64
+```yaml
+      - name: Build and Publish
+        run: |
+          # Publish self-contained executables for Linux, Windows, and macOS
+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r linux-x64 --self-contained true -o ./dist/SmartPhone-linux-x64
+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r win-x64 --self-contained true -o ./dist/SmartPhone-win-x64
+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r osx-x64 --self-contained true -o ./dist/SmartPhone-osx-x64
  
-       - name: Package Artifacts
-         run: |
-@@ -34,6 +38,9 @@
-           (cd dist/Booking-linux-x64 && zip -r ../../Booking-linux-x64.zip .)
-           (cd dist/Booking-win-x64   && zip -r ../../Booking-win-x64.zip .)
-           (cd dist/Booking-osx-x64   && zip -r ../../Booking-osx-x64.zip .)
-+          (cd dist/SmartPhone-linux-x64 && zip -r ../../SmartPhone-linux-x64.zip .)
-+          (cd dist/SmartPhone-win-x64   && zip -r ../../SmartPhone-win-x64.zip .)
-+          (cd dist/SmartPhone-osx-x64   && zip -r ../../SmartPhone-osx-x64.zip .)
- 
-       - name: Get Release Notes from CHANGELOG
-         id: get_release_notes
-@@ -67,3 +74,6 @@
-             Booking-linux-x64.zip
-             Booking-win-x64.zip
-             Booking-osx-x64.zip
-+            SmartPhone-linux-x64.zip
-+            SmartPhone-win-x64.zip
-+            SmartPhone-osx-x64.zip
+      - name: Package Artifacts
+        run: |
+
+          (cd dist/SmartPhone-linux-x64 && zip -r ../../SmartPhone-linux-x64.zip .)
+          (cd dist/SmartPhone-win-x64   && zip -r ../../SmartPhone-win-x64.zip .)
+          (cd dist/SmartPhone-osx-x64   && zip -r ../../SmartPhone-osx-x64.zip .)
+          
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: ${{ steps.get_release_notes.outputs.notes }}
+          prerelease: false
+          files: |
+             SmartPhone-linux-x64.zip
+             SmartPhone-win-x64.zip
+             SmartPhone-osx-x64.zip
 ```
 
 ### 3. Atualização da Documentação
