@@ -89,3 +89,5 @@ A saída esperada é um resumo indicando que todos os testes passaram:
 ```plaintext
 Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5
 ```
+
+> Se rodar o comando no diretório raiz do repositório, ou seja, dentro da solução, será rodado os testes de todos os projetos.

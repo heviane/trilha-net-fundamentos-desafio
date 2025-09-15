@@ -17,10 +17,11 @@ Este espaço documenta minha jornada de estudos na trilha de desenvolvimento .NE
 
 Abaixo está a lista de projetos contidos neste repositório. Cada um representa um desafio específico da trilha de aprendizado.
 
-| Projeto | Descrição | Status | Versão |
-| :--- | :--- | :---: | :---: |
-| 🅿️ [**Parking**](./Parking/) | Uma aplicação de console para gerenciar um estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído | [![Latest Release](https://img.shields.io/github/v/release/heviane-studies/trilha-net-fundamentos-desafio?style=flat-square&color=success)](https://github.com/heviane-studies/trilha-net-fundamentos-desafio/releases) |
-| ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve | ... |
+| Projeto | Descrição | Status |
+| :--- | :--- | :---: |
+| 🅿️ [**Parking**](./Parking/) | Uma aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 🏨 [**Booking**](./Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | 🚧 Em desenvolvimento |
+| ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
 ## 🤝 Como Contribuir
 
