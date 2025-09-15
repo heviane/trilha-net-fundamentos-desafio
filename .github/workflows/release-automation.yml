@@ -37,6 +37,10 @@ jobs:
           dotnet publish ./Booking/Booking.csproj -c Release -r win-x64 --self-contained true -o ./dist/Booking-win-x64
           dotnet publish ./Booking/Booking.csproj -c Release -r osx-x64 --self-contained true -o ./dist/Booking-osx-x64
 
+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r linux-x64 --self-contained true -o ./dist/SmartPhone-linux-x64
+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r win-x64 --self-contained true -o ./dist/SmartPhone-win-x64
+          dotnet publish ./SmartPhone/SmartPhone.csproj -c Release -r osx-x64 --self-contained true -o ./dist/SmartPhone-osx-x64
+
       - name: Package Artifacts
         run: |
           (cd dist/Parking-linux-x64 && zip -r ../../Parking-linux-x64.zip .)
@@ -45,6 +49,9 @@ jobs:
           (cd dist/Booking-linux-x64 && zip -r ../../Booking-linux-x64.zip .)
           (cd dist/Booking-win-x64   && zip -r ../../Booking-win-x64.zip .)
           (cd dist/Booking-osx-x64   && zip -r ../../Booking-osx-x64.zip .)
+          (cd dist/SmartPhone-linux-x64 && zip -r ../../SmartPhone-linux-x64.zip .)
+          (cd dist/SmartPhone-win-x64   && zip -r ../../SmartPhone-win-x64.zip .)
+          (cd dist/SmartPhone-osx-x64   && zip -r ../../SmartPhone-osx-x64.zip .)
 
       - name: Get Release Notes from CHANGELOG
         id: get_release_notes
@@ -83,3 +90,6 @@ jobs:
             Booking-linux-x64.zip
             Booking-win-x64.zip
             Booking-osx-x64.zip
+            SmartPhone-linux-x64.zip
+            SmartPhone-win-x64.zip
+            SmartPhone-osx-x64.zip
