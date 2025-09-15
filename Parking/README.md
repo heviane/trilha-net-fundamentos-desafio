@@ -13,6 +13,14 @@ Este projeto é uma aplicação de console em .NET que simula um sistema de gere
 
 O sistema permite realizar operações essenciais como registrar a entrada de veículos, processar a saída com cálculo de custos e listar os veículos presentes, servindo como uma base sólida para a implementação de funcionalidades mais avançadas.
 
+---
+
+> **Nota sobre a Origem do Desafio**
+>
+> Este projeto foi desenvolvido a partir de um desafio de código proposto pela [Digital Innovation One (DIO)](https://www.dio.me/). O repositório base, com a estrutura inicial, pode ser encontrado em [digitalinnovationone/trilha-net-fundamentos-desafio](https://github.com/digitalinnovationone/trilha-net-fundamentos-desafio).
+
+---
+
 ## ✨ Funcionalidades
 
 A aplicação oferece as seguintes funcionalidades essenciais para a gestão de um estacionamento:
@@ -28,16 +36,6 @@ A aplicação oferece as seguintes funcionalidades essenciais para a gestão de 
 
 - **Listar Veículos**:
   - Exibe uma lista com as placas de todos os veículos que estão atualmente no estacionamento.
-
-<!-- 
-## Layout ou Deploy da Aplicação :dash:
-
-> Link do deploy da aplicação. Exemplo com netlify: https://certificates-for-everyone-womakerscode.netlify.app/
-
-...
-
-Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
--->
 
 ## 🛠️ Pré-requisitos
 

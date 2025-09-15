@@ -23,6 +23,15 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 | 🏨 [**Booking**](./Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
+## 📄 Créditos e Origem dos Desafios
+
+Os projetos neste repositório foram desenvolvidos com base nos desafios de código propostos pela [Digital Innovation One (DIO)](https://www.dio.me/). Os repositórios originais, que serviram como ponto de partida, são:
+
+- **Parking**: [digitalinnovationone/trilha-net-fundamentos-desafio](https://github.com/digitalinnovationone/trilha-net-fundamentos-desafio)
+- **Booking**: [digitalinnovationone/trilha-net-explorando-desafio](https://github.com/digitalinnovationone/trilha-net-explorando-desafio)
+
+Este repositório representa minha implementação e evolução sobre as propostas iniciais, adicionando testes, automações e outras boas práticas de engenharia de software.
+
 ## 🗺️ Roadmap e Padrões de Desenvolvimento
 
 Para garantir a qualidade, consistência e manutenibilidade de todos os desafios, cada projeto neste repositório deve seguir um conjunto de padrões de desenvolvimento.

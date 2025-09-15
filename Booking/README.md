@@ -13,6 +13,14 @@ Este projeto é uma aplicação de console em .NET que simula um sistema de rese
 
 O sistema permite gerenciar suítes, hóspedes e reservas, calculando o valor total da estadia com base em regras de negócio, como descontos por longa permanência.
 
+---
+
+> **Nota sobre a Origem do Desafio**
+>
+> Este projeto foi desenvolvido a partir de um desafio de código proposto pela [Digital Innovation One (DIO)](https://www.dio.me/). O repositório base, com a estrutura inicial, pode ser encontrado em [digitalinnovationone/trilha-net-explorando-desafio](https://github.com/digitalinnovationone/trilha-net-explorando-desafio).
+
+---
+
 ## ✨ Funcionalidades
 
 A aplicação oferece as seguintes funcionalidades essenciais para a gestão de reservas de um hotel:
