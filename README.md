@@ -27,11 +27,12 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 
 Para garantir a qualidade, consistência e manutenibilidade de todos os desafios, cada projeto neste repositório deve seguir um conjunto de padrões de desenvolvimento.
 
-### Padrões de Qualidade por Projeto
+### Padrões de Qualidade ppara este Repositório e seus Projetos
 
 - ✅ **Testes Unitários**: Implementar uma suíte de testes com xUnit para validar a lógica de negócio das aplicações de console.
 - ✅ **Containerização**: Criar um `Dockerfile` para executar a aplicação em um ambiente isolado com Docker.
 - ✅ **Integração Contínua (CI)**: Configurar um workflow no GitHub Actions para compilar e testar o código automaticamente.
+- ✅ **Release Automatizada**: Configurar um workflow para criar releases no GitHub automaticamente, anexando os executáveis compilados (artefatos) para Linux, Windows e macOS.
 
 ### Funcionalidades Futuras
 
