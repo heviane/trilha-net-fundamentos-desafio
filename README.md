@@ -1,10 +1,10 @@
 # 🎓 Trilha .NET: Fundamentos e Desafios
 
 <p align="center">
-  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=blueviolet"></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/heviane/trilha-net-fundamentos-desafio/dotnet-ci.yml?branch=main&style=for-the-badge&label=CI"></a>
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/releases"><img alt="Latest Release" src="https://img.shields.io/github/v/release/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=success"></a>
   <a href="./LICENSE"><img alt="License" src="https://img.shields.io/github/license/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=blue"></a>
   <a href="./.github/CONTRIBUTING.md"><img alt="Contributions Welcome" src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge"></a>
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/heviane/trilha-net-fundamentos-desafio?style=for-the-badge&color=orange">
 </p>
 
 > Repositório dedicado ao aprendizado e desenvolvimento de desafios da trilha de formação .NET da [Digital Innovation One](https://www.dio.me/).
