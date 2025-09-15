@@ -18,6 +18,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build and Publish
+        run: |
+          # Publish self-contained executables for Linux, Windows, and macOS
+          dotnet publish ./Parking/Parking.csproj -c Release -r linux-x64 --self-contained true -o ./dist/Parking-linux-x64
+          dotnet publish ./Parking/Parking.csproj -c Release -r win-x64 --self-contained true -o ./dist/Parking-win-x64
+          dotnet publish ./Parking/Parking.csproj -c Release -r osx-x64 --self-contained true -o ./dist/Parking-osx-x64
+
+          dotnet publish ./Booking/Booking.csproj -c Release -r linux-x64 --self-contained true -o ./dist/Booking-linux-x64
+          dotnet publish ./Booking/Booking.csproj -c Release -r win-x64 --self-contained true -o ./dist/Booking-win-x64
+          dotnet publish ./Booking/Booking.csproj -c Release -r osx-x64 --self-contained true -o ./dist/Booking-osx-x64
+
+      - name: Package Artifacts
+        run: |
+          (cd dist/Parking-linux-x64 && zip -r ../../Parking-linux-x64.zip .)
+          (cd dist/Parking-win-x64   && zip -r ../../Parking-win-x64.zip .)
+          (cd dist/Parking-osx-x64   && zip -r ../../Parking-osx-x64.zip .)
+          (cd dist/Booking-linux-x64 && zip -r ../../Booking-linux-x64.zip .)
+          (cd dist/Booking-win-x64   && zip -r ../../Booking-win-x64.zip .)
+          (cd dist/Booking-osx-x64   && zip -r ../../Booking-osx-x64.zip .)
+
       - name: Get Release Notes from CHANGELOG
         id: get_release_notes
         run: |
@@ -48,3 +76,10 @@ jobs:
           name: ${{ github.ref_name }}
           body: ${{ steps.get_release_notes.outputs.notes }}
           prerelease: false
+          files: |
+            Parking-linux-x64.zip
+            Parking-win-x64.zip
+            Parking-osx-x64.zip
+            Booking-linux-x64.zip
+            Booking-win-x64.zip
+            Booking-osx-x64.zip
