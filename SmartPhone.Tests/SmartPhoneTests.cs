@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using SmartPhone.Models;
+using System.Collections.Generic;
 using Xunit;
 
 namespace SmartPhone.Tests;
@@ -19,72 +20,40 @@ public class SmartPhoneTests : IDisposable
         Console.SetOut(_stringWriter);
     }
 
-    [Fact]
-    public void Nokia_Constructor_ShouldSetPropertiesCorrectly()
+    [Theory]
+    [MemberData(nameof(SmartphoneTestData))]
+    public void Smartphone_Constructor_ShouldSetPropertiesCorrectly(Smartphone smartphone, string expectedNumero, string expectedModelo, string expectedImei, int expectedMemoria)
     {
-        // Arrange
-        string numero = "912345678";
-        string modelo = "Nokia C30";
-        string imei = "111111111111111";
-        int memoria = 64;
-
-        // Act
-        var nokia = new Nokia(numero, modelo, imei, memoria);
+        // Arrange & Act (O objeto já é criado pelo MemberData)
 
         // Assert
-        Assert.Equal(numero, nokia.Numero);
-        Assert.Equal(modelo, nokia.Modelo);
-        Assert.Equal(imei, nokia.IMEI);
-        Assert.Equal(memoria, nokia.Memoria);
+        Assert.Equal(expectedNumero, smartphone.Numero);
+        Assert.Equal(expectedModelo, smartphone.Modelo);
+        Assert.Equal(expectedImei, smartphone.IMEI);
+        Assert.Equal(expectedMemoria, smartphone.Memoria);
     }
 
-    [Fact]
-    public void Iphone_Constructor_ShouldSetPropertiesCorrectly()
+    [Theory]
+    [InlineData(typeof(Nokia), "WhatsApp", "Instalando o aplicativo \"WhatsApp\" no Nokia.")]
+    [InlineData(typeof(Iphone), "Telegram", "Instalando o aplicativo \"Telegram\" no iPhone.")]
+    public void InstalarAplicativo_ShouldPrintCorrectMessage_ForDeviceType(Type deviceType, string appName, string expectedOutput)
     {
         // Arrange
-        string numero = "987654321";
-        string modelo = "iPhone 14";
-        string imei = "222222222222222";
-        int memoria = 128;
+        // Usando reflection para criar a instância do smartphone apropriado
+        Smartphone smartphone = (Smartphone)Activator.CreateInstance(deviceType, "123", "modelo", "123", 128);
+        string expectedMessage = $"{expectedOutput}{Environment.NewLine}";
 
         // Act
-        var iphone = new Iphone(numero, modelo, imei, memoria);
+        smartphone.InstalarAplicativo(appName);
 
         // Assert
-        Assert.Equal(numero, iphone.Numero);
-        Assert.Equal(modelo, iphone.Modelo);
-        Assert.Equal(imei, iphone.IMEI);
-        Assert.Equal(memoria, iphone.Memoria);
+        Assert.Equal(expectedMessage, _stringWriter.ToString());
     }
 
-    [Fact]
-    public void Nokia_InstalarAplicativo_ShouldPrintCorrectMessage()
+    public static IEnumerable<object[]> SmartphoneTestData()
     {
-        // Arrange
-        var nokia = new Nokia("912345678", "Nokia C30", "111111111111111", 64);
-        string appName = "WhatsApp";
-        string expectedOutput = $"Instalando o aplicativo \"{appName}\" no Nokia.{Environment.NewLine}";
-
-        // Act
-        nokia.InstalarAplicativo(appName);
-
-        // Assert
-        Assert.Equal(expectedOutput, _stringWriter.ToString());
-    }
-
-    [Fact]
-    public void Iphone_InstalarAplicativo_ShouldPrintCorrectMessage()
-    {
-        // Arrange
-        var iphone = new Iphone("987654321", "iPhone 14", "222222222222222", 128);
-        string appName = "Telegram";
-        string expectedOutput = $"Instalando o aplicativo \"{appName}\" no iPhone.{Environment.NewLine}";
-
-        // Act
-        iphone.InstalarAplicativo(appName);
-
-        // Assert
-        Assert.Equal(expectedOutput, _stringWriter.ToString());
+        yield return new object[] { new Nokia("912345678", "Nokia C30", "111111111111111", 64), "912345678", "Nokia C30", "111111111111111", 64 };
+        yield return new object[] { new Iphone("987654321", "iPhone 14", "222222222222222", 128), "987654321", "iPhone 14", "222222222222222", 128 };
     }
 
     public void Dispose()

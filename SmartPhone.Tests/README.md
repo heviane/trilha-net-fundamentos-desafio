@@ -63,13 +63,14 @@ Cada teste segue o padrão Arrange, Act, Assert:
 
 ### 4. Como Executar os Testes 🚀
 
-Navegue até a pasta raiz da solução (`trilha-net-fundamentos-desafio`) ou para a pasta deste projeto (`SmartPhone.Tests`) e execute um dos seguintes comandos:
+Para executar os testes, você pode rodar os testes de toda a solução ou apenas os testes deste projeto específico.
 
-#### Execução Única
+#### Rodando Apenas os Testes do SmartPhone
 
-Para compilar o projeto e rodar todos os testes uma vez:
+Para focar apenas neste projeto, navegue até a sua pasta e execute o comando:
 
 ```bash
+cd SmartPhone.Tests
 dotnet test
 ```
 
