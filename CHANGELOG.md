@@ -8,6 +8,22 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+### Added
+
+- **`SmartPhone.Tests/`**: Adicionada análise de cobertura de testes com Coverlet e ReportGenerator.
+  - **Motivo**: Medir a eficácia dos testes unitários e garantir que toda a lógica de negócio crítica seja validada, visando 100% de cobertura.
+  - **Alteração**: Adicionado o pacote `coverlet.collector`, criado o arquivo `coveragesettings.runsettings` para excluir o `Program.cs` da análise, e atualizada a documentação com os comandos para gerar o relatório.
+
+- **`SmartPhone/Models/`**: Adicionada documentação de código com XML Comments.
+  - **Motivo**: Melhorar a clareza, a manutenibilidade e habilitar o suporte do IntelliSense.
+  - **Alteração**: Todas as classes públicas (`Smartphone`, `Nokia`, `Iphone`), métodos e propriedades foram documentados.
+
+### Changed
+
+- **`SmartPhone.Tests/`**: Refatorados os testes unitários para usar `[Theory]`.
+  - **Motivo**: Reduzir a duplicação de código, melhorar a manutenibilidade e seguir o princípio DRY (Don't Repeat Yourself).
+  - **Alteração**: Os testes foram consolidados em testes parametrizados (`[Theory]`, `[MemberData]`, `[InlineData]`), tornando o código mais limpo e escalável.
+
 ## [1.4.0] - 2025-09-15
 
 ### Added
