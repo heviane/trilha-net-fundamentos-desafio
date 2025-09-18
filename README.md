@@ -21,7 +21,7 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 | :--- | :--- | :---: |
 | 🅿️ [**Parking**](./Parking/) | Uma aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | 🏨 [**Booking**](./Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 📱 [**SmartPhone**](./SmartPhone/) | Uma aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | 🚧 Em Andamento |
+| 📱 [**SmartPhone**](./SmartPhone/) | Uma aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
 ## 📄 Créditos e Origem dos Desafios
