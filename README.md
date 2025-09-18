@@ -24,7 +24,7 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 | 📱 [**SmartPhone**](./SmartPhone/) | Uma aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
-## 📄 Créditos e Origem dos Desafios
+### 📄 Créditos e Origem dos Desafios
 
 Os projetos neste repositório foram desenvolvidos com base nos desafios de código propostos pela [Digital Innovation One (DIO)](https://www.dio.me/). Os repositórios originais, que serviram como ponto de partida, são:
 
@@ -36,22 +36,16 @@ Este repositório representa minha implementação e evolução sobre as propost
 
 ## 🗺️ Roadmap e Padrões de Desenvolvimento
 
-Para garantir a qualidade, consistência e manutenibilidade de todos os desafios, cada projeto neste repositório deve seguir um conjunto de padrões de desenvolvimento.
+Para garantir a qualidade, consistência e manutenibilidade de todos os desafios, cada projeto neste repositório deve seguir um conjunto de padrões de desenvolvimento e de Qualidade:
 
-### Padrões de Qualidade adotados para este Repositório e seus Projetos
-
-- ✅ **Testes Unitários**: Implementar uma suíte de testes com **xUnit** para validar a lógica de negócio das aplicações de console.
-- ✅ **Containerização**: Criar um `Dockerfile` para executar a aplicação em um ambiente isolado com **Docker**.
-- ✅ **Integração Contínua (CI)**: Configurar um `workflow` no **GitHub Actions** para compilar e testar o código automaticamente.
-- ✅ **Release Automatizada**: Configurar um `workflow` para criar releases no GitHub automaticamente, anexando os executáveis compilados (artefatos) para Linux, Windows e macOS.
-
-### Padrões de Qualidade em análise para futuras implementações
-
+- ✅ **Novos Projetos**: [Guia para Adicionar um Novo Desáfio](./.github/NEW_CHALLENGE_GUIDE.md)
+- ✅ **Testes Unitários e Cobertura de Testes**: [Guia de Testes com xUnit e Coverlet](./.github/TESTING_GUIDE.md)
+- ✅ **Containerização**: [Guia de Conteinerização com Docker](./.github/DOCKER_GUIDE.md)
+- ✅ **Releases**: [Guia de Criação de Releases](./.github/RELEASING_GUIDE.md)
 - 🚧 **Análise Estática (Linting)**: Implementar verificação de formatação e estilo de código no CI.
-- 🚧 **Cobertura de Testes**: Adicionar relatórios de cobertura de testes (ex: Codecov) ao workflow de CI.
 - 🚧 **Otimização de Build**: Refatorar o workflow de release para executar builds em paralelo, reduzindo o tempo de execução.
 
-### Funcionalidades em análise para futuras implementações
+### 🔭 Funcionalidades em análise para futuras implementações
 
 Além dos padrões de qualidade, as seguintes funcionalidades estão no radar para serem exploradas em projetos futuros ou como evoluções dos desafios atuais:
 
@@ -64,8 +58,8 @@ Além dos padrões de qualidade, as seguintes funcionalidades estão no radar pa
 
 Este é um projeto de código aberto e ficamos felizes em receber contribuições! Se você tem interesse em ajudar, seja corrigindo bugs, propondo novas funcionalidades ou melhorando a documentação, sua ajuda é muito bem-vinda.
 
-1. Leia nosso [**Guia de Contribuição**](./.github/CONTRIBUTING.md) para entender o processo.
-2. Observe nosso [**Código de Conduta**](./.github/CODE_OF_CONDUCT.md) para garantir um ambiente colaborativo e respeitoso.
+1. Leia nosso [Guia de Contribuição](./.github/CONTRIBUTING.md) para entender o processo.
+2. Observe nosso [Código de Conduta](./.github/CODE_OF_CONDUCT.md) para garantir um ambiente colaborativo e respeitoso.
 3. Procure por [issues abertas](./issues) para encontrar tarefas em que você pode ajudar.
 
 ## :octocat: Desenvolvedores e Contribuintes

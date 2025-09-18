@@ -1,4 +1,4 @@
- # 🅿️ Estacionamento de veículos
+# 🅿️ Estacionamento de Veículos
 
 <p align="center">
   <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/heviane/trilha-net-fundamentos-desafio/dotnet-ci.yml?branch=main&style=for-the-badge&label=CI"></a>
@@ -15,9 +15,7 @@ O sistema permite realizar operações essenciais como registrar a entrada de ve
 
 ---
 
-> **Nota sobre a Origem do Desafio**
->
-> Este projeto foi desenvolvido a partir de um desafio de código proposto pela [Digital Innovation One (DIO)](https://www.dio.me/). O repositório base, com a estrutura inicial, pode ser encontrado em [digitalinnovationone/trilha-net-fundamentos-desafio](https://github.com/digitalinnovationone/trilha-net-fundamentos-desafio).
+> **Nota:** Este projeto foi desenvolvido a partir de um desafio de código proposto pela [Digital Innovation One (DIO)](https://www.dio.me/). O repositório base, com a estrutura inicial, pode ser encontrado em [digitalinnovationone/trilha-net-fundamentos-desafio](https://github.com/digitalinnovationone/trilha-net-fundamentos-desafio).
 
 ---
 
@@ -37,58 +35,22 @@ A aplicação oferece as seguintes funcionalidades essenciais para a gestão de 
 - **Listar Veículos**:
   - Exibe uma lista com as placas de todos os veículos que estão atualmente no estacionamento.
 
-## 🛠️ Pré-requisitos
+## Guias Úteis
 
-Para clonar e executar este projeto localmente, você precisará ter as seguintes ferramentas instaladas em sua máquina:
-
-- **[.NET 9.0 SDK](https://dotnet.microsoft.com/en-us/download)**: Essencial para compilar e executar a aplicação e os testes.
-- **[Git](https://git-scm.com/)**: Necessário para clonar o repositório.
-- **[Docker](https://www.docker.com/products/docker-desktop/)**: Opcional, mas necessário para construir e executar a aplicação via container.
-
-  ### Recomendado
-
-  - Um editor de código como o **[Visual Studio Code](https://code.visualstudio.com/)** com a extensão [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit).
-
-## :arrow_forward: Como rodar a aplicação
-
-No terminal, execute os comandos abaixo:
+- **Como rodar a aplicação:**
 
 ```bash
 ## Clone o projeto:
 git clone git@github.com:heviane/trilha-net-fundamentos-desafio.git
-
-## Entre na pasta do repositório:
-cd trilha-net-fundamentos-desafio
-```
-
-### Rodar a aplicação sem Docker
-
-```bash
-cd Parking
+## Entre na pasta do projeto:
+cd trilha-net-fundamentos-desafio/Parking
+## Execute a aplicação:
 dotnet run
 ```
 
-### Rodar a aplicação com Docker
-
-Com o Docker instalado e executando, você pode construir e executar a aplicação em um ambiente containerizado, garantindo consistência e isolamento.
-
-**Importante**: Execute os comandos a partir da pasta raiz do repositório.
-
-```bash
-# Construa a imagem Docker especificando o Dockerfile do projeto:
-docker build -t parking-app -f Parking/Dockerfile .
-
-# Execute o container de forma interativa:
-# Flag -it para alocar um terminal interativo, essencial para uma aplicação de console
-# Flag --rm para remover o container automaticamente após a sua execução.
-docker run -it --rm parking-app
-```
-
-<!-- TODO: Dica: clone o próprio projeto e verfique se o passo a passo funciona. -->
-
-## 🧪 Como rodar os testes
-
-Para garantir a qualidade e o correto funcionamento do projeto, a aplicação conta com uma suíte de testes unitários. As instruções detalhadas para executar os testes estão disponíveis no [README do projeto de testes](../Parking.Tests/README.md#4-como-executar-os-testes-).
+- **[Guia de Conteinerização com Docker](../.github/DOCKER_GUIDE.md)**
+- **[Guia de Testes com xUnit e Coverlet](../.github/TESTING_GUIDE.md)**
+- **[Guia de Criação de Releases](../.github/RELEASING_GUIDE.md)**
 
 ## :octocat: Desenvolvedores e Contribuintes
 
