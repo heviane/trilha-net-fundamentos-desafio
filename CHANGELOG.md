@@ -8,7 +8,13 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+## [1.5.0] - 2025-09-18
+
 ### Added
+
+- **`.github/`**: Adicionados guias de desenvolvimento centralizados.
+  - **Motivo**: Criar uma fonte única de verdade para padronizar processos de engenharia, garantir consistência e facilitar a integração de novos contribuidores.
+  - **Alteração**: Criados os guias `NEW_CHALLENGE_GUIDE.md`, `DOCKER_GUIDE.md`, `TESTING_GUIDE.md` e `RELEASING_GUIDE.md`.
 
 - **`SmartPhone.Tests/`**: Adicionada análise de cobertura de testes com Coverlet e ReportGenerator.
   - **Motivo**: Medir a eficácia dos testes unitários e garantir que toda a lógica de negócio crítica seja validada, visando 100% de cobertura.
@@ -19,6 +25,10 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
   - **Alteração**: Todas as classes públicas (`Smartphone`, `Nokia`, `Iphone`), métodos e propriedades foram documentados.
 
 ### Changed
+
+- **`README.md`s**: Refatorados todos os `README.md`s para remover conteúdo duplicado e apontar para os guias centralizados.
+  - **Motivo**: Simplificar a manutenção, aplicar o princípio DRY e garantir consistência na documentação.
+  - **Alteração**: Os `README.md`s dos projetos foram enxugados, e a documentação técnica foi consolidada nos guias da pasta `.github/`.
 
 - **`SmartPhone.Tests/`**: Refatorados os testes unitários para usar `[Theory]`.
   - **Motivo**: Reduzir a duplicação de código, melhorar a manutenibilidade e seguir o princípio DRY (Don't Repeat Yourself).
