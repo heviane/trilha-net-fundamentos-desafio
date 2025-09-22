@@ -8,6 +8,21 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+## [1.6.0] - 2024-10-27
+
+### Added
+
+- **`src/console/Apps/HelloWorld/`**: Adicionado novo projeto de desafio `HelloWorld` para servir como exemplo e validar a nova estrutura de automação.
+
+### Changed
+
+- **`.github/workflows/release-automation.yml`**: Refatorado o workflow para usar uma matriz de estratégia (`strategy: matrix`).
+  - **Motivo**: Eliminar a duplicação de código, facilitar a adição de novos projetos e otimizar o tempo de execução do pipeline através de builds paralelos.
+  - **Alteração**: O workflow foi dividido em dois jobs: `build` (que executa em paralelo para cada projeto) e `release` (que agrupa os artefatos).
+- **`Estrutura de Pastas`**: Refatorada a organização dos projetos para separar aplicações por tipo.
+  - **Motivo**: Melhorar a escalabilidade e a organização do repositório, preparando-o para futuros projetos de API e Web.
+  - **Alteração**: Os projetos de console foram movidos da raiz para a nova estrutura `src/console/Apps/`. A estrutura `src/api/Apps/` foi criada para acomodar futuras APIs.
+
 ## [1.5.0] - 2025-09-18
 
 ### Added
