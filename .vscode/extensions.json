@@ -1,0 +1,19 @@
+{
+  // Estas são as extensões recomendadas para trabalhar neste projeto.
+  // O VS Code irá sugerir a instalação delas automaticamente ao abrir o repositório.
+  "recommendations": [
+    // --- Kit Essencial para C# ---
+    "ms-dotnettools.csdevkit", // O cérebro do desenvolvimento .NET: gerenciador de solução, testes, etc.
+    "ms-dotnettools.csharp", // Suporte base à linguagem C# (IntelliSense, sintaxe).
+    "ms-dotnettools.intellicode-csdevkit", // IntelliSense assistido por IA.
+
+    // --- Produtividade e Ferramentas ---
+    "humao.rest-client", // Testar APIs diretamente do editor.
+    "ms-dotnettools.polyglot-notebooks", // Cadernos interativos para prototipagem e documentação.
+    "eamodio.gitlens", // Superpoderes para o Git (blame, histórico, etc.).
+    "editorconfig.editorconfig", // Manter a consistência do estilo de código.
+
+    // --- Melhorias Visuais (Opcional) ---
+    "vscode-icons-team.vscode-icons" // Ícones mais descritivos para arquivos e pastas.
+  ]
+}

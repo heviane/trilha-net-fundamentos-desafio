@@ -1,0 +1,23 @@
+{
+  // --- Configurações de Formatação e Qualidade de Código ---
+
+  // Ativa a formatação automática sempre que um arquivo for salvo.
+  "editor.formatOnSave": true,
+
+  // Define o formatador padrão para arquivos C#.
+  // Isso garante que o "formatOnSave" use as regras do .editorconfig corretamente.
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+
+  // --- Configurações do Explorador de Arquivos ---
+
+  // Oculta pastas geradas automaticamente para manter a árvore de arquivos limpa.
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true
+  },
+
+  // Ativa automaticamente o tema de ícones recomendado para este workspace.
+  "workbench.iconTheme": "vscode-icons"
+}

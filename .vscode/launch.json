@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug: MinimalAPI",
+            "type": "coreclr",
+            "request": "launch",
+            /* ----- criado a task "build" no arquivo tasks.json
+                A tarefa "build" que criamos usa a variável ${fileDirname}.
+                Isso significa que, para depurar um projeto específico (como MinimalApi ou HelloWorld),
+                você precisa ter um de seus arquivos (por exemplo, Program.cs ou UserController.cs) aberto e ativo no editor antes de pressionar F5.
+                Dessa forma, o VS Code saberá exatamente qual projeto compilar antes de iniciar o depurador.
+            */
+            "preLaunchTask": "build",
+            // Caminho para a DLL de saída do projeto MinimalAPI
+            "program": "${workspaceFolder}/src/api/Apps/MinimalAPI/bin/Debug/net9.0/MinimalApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/api/Apps/MinimalAPI",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                // Padrão ajustado para capturar apenas a URL HTTP, conforme o uso do projeto.
+                "pattern": "\\bNow listening on:\\s+(http://\\S+)",
+                // Abre a URL raiz da API, já que este projeto não usa Swagger.
+                "uriFormat": "%s"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": { "/Views": "${workspaceFolder}/Views" }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
