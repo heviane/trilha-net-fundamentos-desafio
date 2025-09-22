@@ -12,7 +12,7 @@ COPY . .
 
 # Restaura as dependências e publica a aplicação em modo Release.
 # A saída é direcionada para a pasta /app/publish.
-RUN dotnet publish "Parking/Parking.csproj" -c Release -o /app/publish
+RUN dotnet publish "src/console/Apps/Parking/Parking.csproj" -c Release -o /app/publish
 
 # Estágio 2: Final
 # Usamos a imagem do Runtime, que é muito menor e contém apenas o necessário para executar a aplicação.

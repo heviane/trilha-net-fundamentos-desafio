@@ -43,7 +43,7 @@ A aplicação oferece as seguintes funcionalidades essenciais para a gestão de 
 ## Clone o projeto:
 git clone git@github.com:heviane/trilha-net-fundamentos-desafio.git
 ## Entre na pasta do projeto:
-cd trilha-net-fundamentos-desafio/Parking
+cd trilha-net-fundamentos-desafio/src/console/Apps/Parking
 ## Execute a aplicação:
 dotnet run
 ```
@@ -59,6 +59,6 @@ dotnet run
 
 ## 📜 Licença
 
-The [MIT License](../LICENSE) (MIT)
+The [MIT License](../../../../LICENSE) (MIT)
 
 Copyright :copyright: 2025 - Estacionamento de veículos

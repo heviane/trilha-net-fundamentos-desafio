@@ -19,9 +19,9 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 
 | Projeto | Descrição | Status |
 | :--- | :--- | :---: |
-| 🅿️ [**Parking**](./Parking/) | Uma aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 🏨 [**Booking**](./Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 📱 [**SmartPhone**](./SmartPhone/) | Uma aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 🅿️ [**Parking**](./src/console/Apps/Parking/) | Uma aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 🏨 [**Booking**](./src/console/Apps/Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 📱 [**SmartPhone**](./src/console/Apps/SmartPhone/) | Uma aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
 ### 📄 Créditos e Origem dos Desafios

@@ -26,18 +26,18 @@ Para clonar e executar este projeto localmente, você precisará ter as seguinte
 Crie o projeto principal e seu respectivo projeto de testes, vinculando ambos à solução.
 
 ```bash
-# 1. Crie o projeto principal (ex: aplicação de console)
-dotnet new console -n NewChallenge -o NewChallenge
+# 1. Crie o projeto principal na estrutura de pastas correta
+dotnet new console -n NewChallenge -o src/console/Apps/NewChallenge
 
 # 2. Crie o projeto de testes com xUnit
-dotnet new xunit -n NewChallenge.Tests -o NewChallenge.Tests
+dotnet new xunit -n NewChallenge.Tests -o src/console/Apps/NewChallenge.Tests
 
 # 3. Adicione ambos os projetos à solução (.sln)
-dotnet sln add NewChallenge/NewChallenge.csproj
-dotnet sln add NewChallenge.Tests/NewChallenge.Tests.csproj
+dotnet sln add src/console/Apps/NewChallenge/NewChallenge.csproj
+dotnet sln add src/console/Apps/NewChallenge.Tests/NewChallenge.Tests.csproj
 
 # 4. Adicione a referência do projeto principal ao projeto de testes
-dotnet add NewChallenge.Tests/NewChallenge.Tests.csproj reference NewChallenge/NewChallenge.csproj
+dotnet add src/console/Apps/NewChallenge.Tests/NewChallenge.Tests.csproj reference src/console/Apps/NewChallenge/NewChallenge.csproj
 ```
 
 #### 2. Implemente a Conteinerização com Docker:

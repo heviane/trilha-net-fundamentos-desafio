@@ -35,7 +35,7 @@ Use o CLI do .NET para criar um projeto de testes padrão.
 
 ```bash
 # Cria uma nova pasta NewChallenge.Tests com um projeto xUnit
-dotnet new xunit -n NewChallenge.Tests -o NewChallenge.Tests
+dotnet new xunit -n NewChallenge.Tests -o src/console/Apps/NewChallenge.Tests
 ```
 
 ### b. Vincular os Projetos à Solução
@@ -44,10 +44,10 @@ Adicione o novo projeto de testes à solução (`.sln`) e crie uma referência d
 
 ```bash
 # Adiciona o projeto de testes à solução
-dotnet sln add NewChallenge.Tests/NewChallenge.Tests.csproj
+dotnet sln add src/console/Apps/NewChallenge.Tests/NewChallenge.Tests.csproj
 
 # Adiciona a referência do projeto da aplicação ao projeto de testes
-dotnet add NewChallenge.Tests/NewChallenge.Tests.csproj reference NewChallenge/NewChallenge.csproj
+dotnet add src/console/Apps/NewChallenge.Tests/NewChallenge.Tests.csproj reference src/console/Apps/NewChallenge/NewChallenge.csproj
 ```
 
 ### c. Configurar Cobertura de Testes
@@ -55,8 +55,7 @@ dotnet add NewChallenge.Tests/NewChallenge.Tests.csproj reference NewChallenge/N
 Para medir a eficácia dos testes, configuramos o `Coverlet`.
 
 ```bash
-# Navegue até a pasta do novo projeto de testes
-cd NewChallenge.Tests
+# Execute a partir da pasta do projeto de testes (ex: HelloWorld.Tests/)
 
 # Adicione o pacote do coletor de cobertura
 dotnet add package coverlet.collector
@@ -116,8 +115,7 @@ dotnet test
 Para uma experiência de desenvolvimento mais fluida, use o modo de observação. Ele executará os testes automaticamente sempre que uma alteração for salva.
 
 ```bash
-# Navegue até a pasta do projeto de testes
-cd NewChallenge.Tests
+# Execute a partir da pasta do projeto de testes (ex: HelloWorld.Tests/)
 dotnet watch test
 ```
 
@@ -159,7 +157,7 @@ Para gerar o relatório, execute a sequência de comandos abaixo a partir da pas
 Para garantir um relatório limpo, use este comando único que limpa artefatos antigos, executa os testes e gera o novo relatório.
 
 ```bash
-# Execute a partir da pasta do projeto de testes (ex: SmartPhone.Tests/)
+# Execute a partir da pasta do projeto de testes (ex: HelloWorld.Tests/)
 
 # macOS / Linux
 dotnet clean && rm -rf TestResults coveragereport && dotnet test --settings coveragesettings.runsettings --collect:"XPlat Code Coverage" && reportgenerator -reports:"TestResults/**/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:Html

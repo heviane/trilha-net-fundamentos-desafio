@@ -38,7 +38,7 @@ A aplicação demonstra os seguintes conceitos e funcionalidades:
 ## Clone o projeto:
 git clone git@github.com:heviane/trilha-net-fundamentos-desafio.git
 ## Entre na pasta do projeto:
-cd trilha-net-fundamentos-desafio/SmartPhone 
+cd trilha-net-fundamentos-desafio/src/console/Apps/SmartPhone 
 ## Execute a aplicação
 dotnet run 
 ```
@@ -54,6 +54,6 @@ dotnet run
 
 ## 📜 Licença
 
-The MIT License (MIT)
+The [MIT License](../../../../LICENSE) (MIT)
 
-Copyright :copyright: 2025 - Sistema de Smartphone
+Copyright :copyright: 2025 - Estacionamento de veículos
