@@ -50,10 +50,14 @@ Para garantir a qualidade, consistência e manutenibilidade de todos os desafios
 
 Além dos padrões de qualidade, as seguintes funcionalidades estão no radar para serem exploradas em projetos futuros ou como evoluções dos desafios atuais:
 
-- [x] Implementar persistência de dados.
-- [x] Explorar a criação de **APIs RESTful**.
-- [x] Implementar mecanismos de **autenticação e autorização**.
-- [ ] Criar uma aplicação **web** com ASP.NET Core.
+- [ ] Explorar **APIs RESTful**.
+  - [ ] Explorar persistência de dados.
+  - [ ] Explorar mecanismos de **autenticação e autorização**.
+- [ ] Explorar aplicações **web** com ASP.NET Core.
+  - [ ] ...
+- [ ] DevOps
+  - [ ] Aplicar **CI/CD (Continuous Integration/Continuous Delivery)** aos projetos (Para projetos de console é o suficiente).
+  - [ ] Aplicar **Continuous Deployment (CD - Implantação Contínua)** aos projetos web.
 
 ## 🤝 Como Contribuir
 
