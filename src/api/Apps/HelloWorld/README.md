@@ -2,7 +2,6 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-9.0-blueviolet?style=for-the-badge&logo=.net" alt=".NET 9.0">
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Changelog-Keep%20a%20Changelog-blue?style=for-the-badge" alt="Changelog"></a>
   <img src="https://img.shields.io/badge/Template-Minimal_API-blue?style=for-the-badge&logo=c-sharp" alt="Minimal API">
   <img src="https://img.shields.io/badge/Docs-Swagger-green?style=for-the-badge&logo=swagger" alt="Swagger">
 </p>
