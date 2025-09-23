@@ -1,4 +1,4 @@
-# HelloWorld API
+# MinimalApi API
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-9.0-blueviolet?style=for-the-badge&logo=.net" alt=".NET 9.0">
@@ -7,12 +7,18 @@
   <img src="https://img.shields.io/badge/Docs-Swagger-green?style=for-the-badge&logo=swagger" alt="Swagger">
 </p>
 
-`HelloWorld` é um projeto de API RESTful simples, construído com .NET e o template de Minimal API. Seu principal objetivo é servir como um exemplo base e validar a estrutura de automação e documentação para futuros projetos de API neste repositório.
+`MinimalApi` é um projeto de API RESTful simples, construído com .NET. Seu objetivo é servir como exemplo de uma API com funcionalidades básicas, como endpoints, manipulação de DTOs e acesso a dados com Entity Framework Core.
 
 ## ✨ Funcionalidades
 
 - **Arquitetura**: API criada a partir do template **Minimal API** do **.NET**.
+  - Estrutura do Projeto:
+    - infrastructure: conexão com banco de dados, etc.
+    - domain: regras de negócio, etc.
+      - entities: 
+- **Endpoints**: Inclui exemplos de `GET` e `POST` com um DTO (`LoginDTO`).
 - **Documentação**: Geração automática de documentação interativa com **[Swagger (OpenAPI)](https://swagger.io/)**.
+- **Acesso a Dados**: Utiliza **Entity Framework Core** com um provedor de banco de dados em memória para um exemplo de autenticação.
 
 ---
 
@@ -23,7 +29,6 @@ Para clonar e executar este projeto localmente, você precisará ter as seguinte
 - [.NET SDK 9.0](https://dotnet.microsoft.com/en-us/download)
 - [Git](https://git-scm.com/)
 - Um editor de código como [Visual Studio Code](https://code.visualstudio.com/) com a extensão C# Dev Kit.
-- Adicionar pacote `dotnet add package Swashbuckle.AspNetCore` para uso do **[Swagger (OpenAPI)](https://swagger.io/)**.
 
 ---
 
@@ -32,14 +37,16 @@ Para clonar e executar este projeto localmente, você precisará ter as seguinte
 1. **Clone o repositório**:
 
 ```bash
+# Clone o repositório
 git clone https://github.com/heviane/trilha-net-fundamentos-desafio.git
-cd trilha-net-fundamentos-desafio
+# Navegue até a pasta do projeto
+cd trilha-net-fundamentos-desafio/src/api/Apps/MinimalApi
 ```
 
-2. **Navegue até a pasta do projeto**:
+1. **Instale as dependências:**:
 
 ```bash
-cd src/api/Apps/HelloWorld
+dotnet restore
 ```
 
 3. **Execute a aplicação**:
@@ -54,13 +61,13 @@ A API estará disponível em `https://localhost:XXXX` ou `http://localhost:YYYY`
 
 ## 🐛 Como Depurar (Debug)
 
-Este projeto está pré-configurado para depuração no Visual Studio Code.
+Este projeto está pré-configurado para depuração no Visual Studio Code. Pressione `F5` para iniciar a depuração, e o navegador abrirá automaticamente na página do Swagger.
 
-1. Abra a pasta do repositório no VS Code.
-2. Abra qualquer arquivo do projeto `HelloWorld` (como `Program.cs`).
-3. Pressione `F5` para iniciar a depuração. O VS Code usará a configuração de `launch.json` e abrirá o navegador na página do Swagger automaticamente.
+---
 
 ## 🧪 Testes e 🐳 Docker
 
 - Para informações sobre como adicionar e configurar testes unitários, consulte o **[Guia de Testes com xUnit e Coverlet](../../../../.github/TESTING_GUIDE.md)**.
 - Para informações sobre como criar e executar a aplicação em um container, consulte o **[Guia de Conteinerização com Docker](../../../../.github/DOCKER_GUIDE.md)**.
+
+---

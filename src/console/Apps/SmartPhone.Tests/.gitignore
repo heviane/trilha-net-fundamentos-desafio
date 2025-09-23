@@ -1,9 +1,0 @@
-# Arquivos e pastas gerados pelo processo de build e teste
-
-## Pastas de build do .NET
-bin/
-obj/
-
-## Resultados de Testes e Cobertura
-TestResults/
-coveragereport/

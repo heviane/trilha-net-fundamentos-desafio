@@ -1,0 +1,48 @@
+@MinimalApi_HostAddress = http://localhost:5296
+
+### Formas de executar:
+# Diretamente pelo terminal, executado `dotnet build` + `dotnet run`
+# Diretamente pelo Visual Studio com F5 (debug) ou Ctrl+F5 (sem debug)
+# Diretamente pelo Visual Studio Code com a extensão Thunder Client
+### Testes realizados:
+# .http, Postman, extensão Thunder Client, navegador (para GET) ou curl
+
+###
+# Teste para o endpoint raiz (GET /)
+# Este endpoint retorna a string "Hello World!".
+#
+# Comando curl equivalente:
+# curl -v http://localhost:5120/
+#
+GET {{MinimalApi_HostAddress}}/
+Accept: text/plain
+
+###
+# Teste para o endpoint de login com credenciais VÁLIDAS
+# Envia o DTO de login e espera uma resposta de sucesso (200 OK).
+#
+# Comando curl equivalente:
+# curl -X POST -H "Content-Type: application/json" -d '{"email": "heviane@gmail.com", "password": "123456"}' http://localhost:5120/login
+#
+POST {{MinimalApi_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email": "heviane@gmail.com",
+  "password": "123456"
+}
+
+###
+# Teste para o endpoint de login com credenciais INVÁLIDAS
+# Envia dados incorretos e espera uma resposta de falha (401 Unauthorized).
+#
+# Comando curl equivalente:
+# curl -i -X POST -H "Content-Type: application/json" -d '{"email": "usuario@exemplo.com", "password": "senha-errada"}' http://localhost:5120/login
+#
+POST {{MinimalApi_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email": "usuario@exemplo.com",
+  "password": "senha-errada"
+}

@@ -5,7 +5,7 @@ name: Create Release
 on:
   push:
     tags:
-      - 'v*.*.*' # Dispara o workflow quando uma tag como v1.0.0 é enviada
+      - "v*.*.*" # Dispara o workflow quando uma tag como v1.0.0 é enviada
 
 jobs:
   build:
@@ -13,7 +13,19 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [Parking, Booking, SmartPhone, HelloWorld]
+        include:
+          - project: Booking
+            path: console
+          - project: HelloWorld
+            path: console
+          - project: Parking
+            path: console
+          - project: SmartPhone
+            path: console
+          - project: HelloWorld
+            path: api
+          - project: MinimalApi
+            path: api
 
     steps:
       - name: Checkout code
@@ -22,7 +34,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: "9.0.x"
 
       - name: Restore dependencies
         run: dotnet restore
@@ -30,8 +42,8 @@ jobs:
       - name: Build and Publish
         run: |
           PROJECT_NAME=${{ matrix.project }}
-          PROJECT_PATH="./src/console/Apps/$PROJECT_NAME/$PROJECT_NAME.csproj"
-          
+          PROJECT_PATH="./src/${{ matrix.path }}/Apps/$PROJECT_NAME/$PROJECT_NAME.csproj"
+
           dotnet publish $PROJECT_PATH -c Release -r linux-x64 --self-contained true -o ./dist/$PROJECT_NAME-linux-x64
           dotnet publish $PROJECT_PATH -c Release -r win-x64 --self-contained true -o ./dist/$PROJECT_NAME-win-x64
           dotnet publish $PROJECT_PATH -c Release -r osx-x64 --self-contained true -o ./dist/$PROJECT_NAME-osx-x64

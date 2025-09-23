@@ -8,11 +8,21 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
-## [1.6.0] - 2024-10-27
-
 ### Added
 
-- **`src/console/Apps/HelloWorld/`**: Adicionado novo projeto de desafio `HelloWorld` para servir como exemplo e validar a nova estrutura de automação.
+- **`src/console/Apps/HelloWorld/`**: Adicionado novo projeto de console `HelloWorld` para servir como exemplo e validar a nova estrutura de automação.
+- **`src/api/Apps/HelloWorld/`**: Adicionado novo projeto de API `HelloWorld` para servir como exemplo e validar a nova estrutura de automação.
+- **`src/api/Apps/MinimalApi/`**: Adicionado novo projeto de API `MinimalApi`.
+  - **Motivo**: Criar uma API RESTful com .NET 9 Minimal API, integrando EF Core, MySQL (via Docker) e autenticação básica.
+  - **Detalhes**: Para um log de alterações detalhado, consulte o **[CHANGELOG.md do projeto](./src/api/Apps/MinimalApi/CHANGELOG.md)**.
+
+### Changed
+
+- **`.github/workflows/release-automation.yml`**: Refatorado o workflow de release para suportar projetos em múltiplos diretórios.
+  - **Motivo**: Permitir a compilação de projetos localizados em diferentes estruturas de pastas (ex: `src/api/` e `src/console/`), tornando o pipeline mais flexível e escalável.
+  - **Alteração**: A matriz de build (`matrix`) foi modificada para incluir o caminho (`path`) de cada projeto, além do nome.
+
+## [1.6.0] - 2024-10-27
 
 ### Changed
 

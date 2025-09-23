@@ -22,6 +22,7 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 | 🅿️ [**Parking**](./src/console/Apps/Parking/) | Uma aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | 🏨 [**Booking**](./src/console/Apps/Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | 📱 [**SmartPhone**](./src/console/Apps/SmartPhone/) | Uma aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 🌐 [**MinimalApi**](./src/api/Apps/MinimalApi/) | Uma API RESTful com .NET 9, EF Core, MySQL (Docker) e autenticação básica. | ✅ Concluído |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
 ### 📄 Créditos e Origem dos Desafios
@@ -49,10 +50,10 @@ Para garantir a qualidade, consistência e manutenibilidade de todos os desafios
 
 Além dos padrões de qualidade, as seguintes funcionalidades estão no radar para serem exploradas em projetos futuros ou como evoluções dos desafios atuais:
 
-- [ ] Implementar o uso de **banco de dados** para persistência de dados.
-- [ ] Criar uma **versão web** das aplicações utilizando ASP.NET Core.
-- [ ] Explorar a criação de **APIs RESTful**.
-- [ ] Implementar mecanismos de **autenticação e autorização**.
+- [x] Implementar persistência de dados.
+- [x] Explorar a criação de **APIs RESTful**.
+- [x] Implementar mecanismos de **autenticação e autorização**.
+- [ ] Criar uma aplicação **web** com ASP.NET Core.
 
 ## 🤝 Como Contribuir
 

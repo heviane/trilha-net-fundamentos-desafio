@@ -4,7 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-                {
+        {
             "name": "Debug: HelloWorld API",
             "type": "coreclr",
             "request": "launch",
@@ -43,10 +43,10 @@
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
-                // Padrão ajustado para capturar apenas a URL HTTP, conforme o uso do projeto.
-                "pattern": "\\bNow listening on:\\s+(http://\\S+)",
-                // Abre a URL raiz da API, já que este projeto não usa Swagger.
-                "uriFormat": "%s"
+                // Padrão que captura tanto http quanto https
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                // Abre a página do Swagger UI automaticamente
+                "uriFormat": "%s/swagger"
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
