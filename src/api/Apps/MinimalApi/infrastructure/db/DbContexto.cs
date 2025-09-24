@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using MinimalApi.domain.entities;
 
-namespace MinimalApi.infrastructure.db;
+using MinimalApi.Domain.Entities;
+
+namespace MinimalApi.Infrastructure.Db;
 
 public class DbContexto : DbContext
 {
@@ -12,8 +13,8 @@ public class DbContexto : DbContext
         _configurationAppSettings = configurationAppSettings;
     }
 
-    // Representa a tabela Administrators no banco de dados
-    public DbSet<Administrator> Administrators { get; set; } = default!;
+    public DbSet<Administrator> Administrators { get; set; } = default!; // Representa a tabela Administrators no banco de dados
+    public DbSet<Vehicle> Vehicles { get; set; } = default!; // Representa a tabela Vehicles no banco de dados
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

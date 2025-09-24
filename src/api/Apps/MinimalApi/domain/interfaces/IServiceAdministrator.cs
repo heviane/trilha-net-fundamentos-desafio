@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MinimalApi.domain.dtos;
-using MinimalApi.domain.entities;
+using MinimalApi.Domain.DTOs;
+using MinimalApi.Domain.Entities;
 
-namespace MinimalApi.domain.interfaces
+namespace MinimalApi.Domain.Interfaces
 {
     public interface IServiceAdministrator
     {

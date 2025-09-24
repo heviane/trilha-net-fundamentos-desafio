@@ -71,3 +71,10 @@ Este projeto está pré-configurado para depuração no Visual Studio Code. Pres
 - Para informações sobre como criar e executar a aplicação em um container, consulte o **[Guia de Conteinerização com Docker](../../../../.github/DOCKER_GUIDE.md)**.
 
 ---
+
+### 🔭 Funcionalidades em análise para futuras implementações
+
+Além dos padrões de qualidade, as seguintes funcionalidades estão no radar para serem exploradas em projetos futuros ou como evoluções dos desafios atuais:
+
+- [ ] Garantir que a senha do Administrator seja armazenada de forma segura no banco de dados, em vez de texto puro.
+- [ ] Desacoplar as classes de serviço do DbContext usando o padrão de repositório.

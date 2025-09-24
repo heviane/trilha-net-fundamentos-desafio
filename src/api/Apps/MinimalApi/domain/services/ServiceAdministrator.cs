@@ -2,21 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MinimalApi.domain.interfaces;
-using MinimalApi.domain.dtos;
-using MinimalApi.domain.entities;
-using MinimalApi.infrastructure.db;
 using Microsoft.AspNetCore.Http.HttpResults;
 
+using MinimalApi.Domain.DTOs;
+using MinimalApi.Domain.Entities;
+using MinimalApi.Domain.Interfaces;
+using MinimalApi.Infrastructure.Db;
 
-namespace MinimalApi.domain.services
+namespace MinimalApi.Domain.Services
 {
     public class ServiceAdministrator : IServiceAdministrator
     {
+        /* ----- NOTA: trabalhando aqui com acoplamento forte, mas ideal é usar uma interface
+            Para seguir a Clean Architecture à risca, a camada de Application (ServiceAdministrator) não deveria conhecer o DbContexto diretamente. 
+            Ela deveria depender de uma abstração (interface) de repositório, como IAdministratorRepository, 
+            que seria definida no Domain e implementada na Infrastructure.
 
-        // Lógica de negócio relacionada a administradores
-
-        // ...trabalhando aqui com acoplamento forte, mas ideal é usar uma interface
+            ==>> O próximo passo natural, é desacoplar suas classes de serviço do DbContext usando o padrão de repositório.
+        */
 
         private readonly DbContexto _dbContexto;
 
