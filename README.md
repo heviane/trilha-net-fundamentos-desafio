@@ -22,7 +22,7 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 | 🅿️ [**Parking**](./src/console/Apps/Parking/) | Aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | 🏨 [**Booking**](./src/console/Apps/Booking/) | Aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
 | 📱 [**SmartPhone**](./src/console/Apps/SmartPhone/) | Aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 🌐 [**MinimalApi**](./src/api/Apps/MinimalApi/) | API RESTful com EF Core, MySQL (Docker), Swagger OpenAPI, autenticação básica e CRUD. | ⚙️ Em Andamento |
+| 🌐 [**MinimalApi**](./src/api/Apps/MinimalApi/) | API RESTful com Entity Framework, MySQL (Docker), Swagger OpenAPI, autenticação e autorização com Token JWT. | ⚙️ Em Andamento |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
 ### 📄 Créditos e Origem dos Desafios
