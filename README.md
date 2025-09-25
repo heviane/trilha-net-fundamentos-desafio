@@ -19,10 +19,10 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um representa
 
 | Projeto | Descrição | Status |
 | :--- | :--- | :---: |
-| 🅿️ [**Parking**](./src/console/Apps/Parking/) | Uma aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 🏨 [**Booking**](./src/console/Apps/Booking/) | Uma aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 📱 [**SmartPhone**](./src/console/Apps/SmartPhone/) | Uma aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
-| 🌐 [**MinimalApi**](./src/api/Apps/MinimalApi/) | Uma API RESTful com .NET 9, EF Core, MySQL (Docker) e autenticação básica. | ✅ Concluído |
+| 🅿️ [**Parking**](./src/console/Apps/Parking/) | Aplicação de console para gerenciar um sistema de estacionamento, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 🏨 [**Booking**](./src/console/Apps/Booking/) | Aplicação de console para gerenciar um sistema de hospedagem, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 📱 [**SmartPhone**](./src/console/Apps/SmartPhone/) | Aplicação de console para gerenciar um sistema de SmartPhone, com testes (xUnit), Docker e CI com GitHub Actions. | ✅ Concluído |
+| 🌐 [**MinimalApi**](./src/api/Apps/MinimalApi/) | API RESTful com EF Core, MySQL (Docker), Swagger OpenAPI, autenticação básica e CRUD. | ⚙️ Em Andamento |
 | ... | *Novos desafios serão adicionados aqui.* | 🚧 Em breve |
 
 ### 📄 Créditos e Origem dos Desafios
