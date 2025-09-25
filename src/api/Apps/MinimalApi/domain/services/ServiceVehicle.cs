@@ -33,12 +33,12 @@ namespace MinimalApi.Domain.Services
                 query = query.Where(v => EF.Functions.Like(v.Name.ToLower(), $"%{name.ToLower()}%"));
             }
 
-            int itensPerPage = 10; // Definindo o número de itens por página
+            int pageSize = 10; // Definindo o número de itens por página
 
             // Aplicando paginação
             if (currentPage != null)
             {
-                query = query.Skip(((currentPage.Value - 1) * itensPerPage)).Take(itensPerPage);
+                query = query.Skip(((currentPage.Value - 1) * pageSize)).Take(pageSize);
             }
 
             // Retornando a lista de veículos

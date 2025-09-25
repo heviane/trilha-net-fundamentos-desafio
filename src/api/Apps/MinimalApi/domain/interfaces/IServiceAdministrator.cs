@@ -13,5 +13,10 @@ namespace MinimalApi.Domain.Interfaces
         // Será usado para criar mocks para realizar os testes de unidade
 
         Administrator? Login(LoginDTO loginDTO);
+        Administrator Create(Administrator administrator);
+        List<Administrator> GetAll(int? currentPage = 1);
+        Administrator? GetById(string id);
+
+        void Delete(Administrator administrator);
     }
 }

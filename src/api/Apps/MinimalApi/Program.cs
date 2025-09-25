@@ -12,6 +12,7 @@ using MinimalApi.Domain.Interfaces;
 using MinimalApi.Domain.ModelViews;
 using MinimalApi.Domain.Services;
 using MinimalApi.Infrastructure.Db;
+using MinimalApi.Domain.Enums;
 
 
 #region Builder
@@ -63,20 +64,8 @@ app.MapGet("/", (HttpContext context) =>
 #endregion
 
 #region Administrators
-// Rota para login do administrador: DTO (Data Transfer Object) para receber login e senha do administrador
-app.MapPost("/Administrators/login", (LoginDTO loginDTO, IServiceAdministrator serviceAdministrator) =>
-{
-    if (serviceAdministrator.Login(loginDTO) != null)
-    {
-        return Results.Ok("Login successful!");
-    }
-    else
-    {
-        return Results.Unauthorized();
-    }
-}).WithTags("Administrators");
 
-// Rota para login do administrador: DTO (Data Transfer Object) para receber login e senha do administrador
+// Rota para cadastrar um administrador: DTO (Data Transfer Object) para receber os dados do administrador e serviço de administrador injetado.
 app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdministrator serviceAdministrator) =>
 {
     // Cria uma instância de ValidationErrors
@@ -88,10 +77,110 @@ app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdmin
     };
 
     // Validação simples dos dados recebidos
+    if (string.IsNullOrEmpty(administratorDTO.Email))
+    {
+        messages.Messages.Add("Email is required.");
+    }
+    if (string.IsNullOrEmpty(administratorDTO.Password))
+    {
+        messages.Messages.Add("Login is required.");
+    }
+    if (administratorDTO.Perfil == null || administratorDTO.Perfil == 0)
+    {
+        // Gera a lista de perfis válidos dinamicamente a partir do enum
+        var validProfiles = string.Join(", ", Enum.GetNames(typeof(UserPerfil)).Select(p => $"'{p}'"));
+        messages.Messages.Add($"Perfil cannot be null. Valid values are: {validProfiles}.");
+    }
+
+    // Se houver mensagens de erro, retorna 400 Bad Request com os erros
+    if (messages.Messages.Count > 0)
+    {
+        return Results.BadRequest(messages);
+    }
+
+    // Mapeia os dados do DTO para a entidade Administrator
+    var administrator = new Administrator(
+        administratorDTO.Email,
+        administratorDTO.Password,
+        administratorDTO.Perfil?.ToString() ?? string.Empty
+    );
+
+    serviceAdministrator.Create(administrator);
+
+    // Retorna a resposta com o status 201 Created e o administrador criado usando o modelo de visualização para não expor a senha
+    return Results.Created($"/Administrators/{administrator.Id}", new AdministratorModelView
+    {
+        Id = administrator.Id,
+        Email = administrator.Email,
+        Perfil = administrator.Perfil.ToString()
+    });
 
 }).WithTags("Administrators");
 
+// Rota para listar administradores com paginação: Query Parameters para página atual e serviço de administrador injetado.
+app.MapGet("/Administrators", (int? CurrentPage, IServiceAdministrator serviceAdministrator) =>
+{
+    var adms = new List<AdministratorModelView>();
+    var administrators = serviceAdministrator.GetAll(CurrentPage ?? 1);
 
+    // Converte os administradores para o modelo de visualização (O objetivo deste modelo é não expor a senha do administrador)
+    foreach (var administrator in administrators)
+    {
+        // Adiciona o administrador convertido à lista de administradores
+        adms.Add(new AdministratorModelView
+        {
+            Id = administrator.Id,
+            Email = administrator.Email,
+            Perfil = administrator.Perfil.ToString()
+        });
+    }
+    // Retorna a lista de administradores com status 200 OK
+    return Results.Ok(adms);
+
+}).WithTags("Administrators");
+
+// Rota para buscar administrador por ID: Parâmetro de rota para o ID do administrador e serviço de administrador injetado.
+app.MapGet("/Administrators/{id}", (string id, IServiceAdministrator serviceAdministrator) =>
+{
+    var administrator = serviceAdministrator.GetById(id);
+
+    return administrator != null ? Results.Ok(new AdministratorModelView
+    {
+        Id = administrator.Id,
+        Email = administrator.Email,
+        Perfil = administrator.Perfil.ToString()
+    }) : Results.NotFound();
+
+}).WithTags("Administrators");
+
+// Rota para deletar administrador por ID: Parâmetro de rota para o ID do administrador e serviço de administrador injetado.
+app.MapDelete("/Administrators/{id}", (string id, IServiceAdministrator serviceAdministrator) =>
+{
+    var administrator = serviceAdministrator.GetById(id);
+
+    if (administrator != null)
+    {
+        serviceAdministrator.Delete(administrator);
+        return Results.NoContent();
+    }
+    else
+    {
+        return Results.NotFound();
+    }
+}).WithTags("Administrators");
+
+// Rota para login do administrador: DTO (Data Transfer Object) para receber login e senha do administrador e serviço de administrador injetado.
+app.MapPost("/Administrators/login", (LoginDTO loginDTO, IServiceAdministrator serviceAdministrator) =>
+{
+    if (serviceAdministrator.Login(loginDTO) != null)
+    {
+        return Results.Ok("Login successful!");
+    }
+    else
+    {
+        return Results.Unauthorized();
+    }
+}).WithTags("Administrators");
 #endregion
 
 #region Vehicles
@@ -135,7 +224,7 @@ static ValidationErrors validDTO(VehicleDTO vehicleDTO)
 // Agrupa os endpoints de veículos sob o prefixo "/Vehicles" e a tag "Vehicles" no Swagger
 var vehicleGroup = app.MapGroup("/Vehicles").WithTags("Vehicles");
 
-// Rota para criar veículo: DTO (Data Transfer Object) para receber os dados do veículo via FromBody e serviço de veículo injetado
+// Rota para criar veículo: DTO (Data Transfer Object) para receber os dados do veículo e serviço de veículo injetado
 vehicleGroup.MapPost("/", (VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle) =>
 {
     // Valida os dados do DTO
@@ -162,23 +251,21 @@ vehicleGroup.MapPost("/", (VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle
     return Results.Created($"/Vehicles/{vehicle.Id}", vehicle);
 });
 
-// Rota para listar veículos com paginação: Query Parameters para página atual (CurrentPage) e serviço de veículo injetado.
+// Rota para listar veículos com paginação: Query Parameters para página atual e serviço de veículo injetado.
 vehicleGroup.MapGet("/", (int? CurrentPage, IServiceVehicle serviceVehicle) =>
 {
     var vehicles = serviceVehicle.GetAll(CurrentPage ?? 1);
     return Results.Ok(vehicles); // Retorna a lista de veículos com status 200 OK
 });
 
-// Rota para buscar veículo por ID: Parâmetro de rota para o ID do veículo (From Route) e serviço de veículo injetado.
+// Rota para buscar veículo por ID: Parâmetro de rota para o ID do veículo e serviço de veículo injetado.
 vehicleGroup.MapGet("/{id}", (int id, IServiceVehicle serviceVehicle) =>
 {
     var vehicle = serviceVehicle.GetById(id);
     return vehicle != null ? Results.Ok(vehicle) : Results.NotFound();
 });
 
-// Rota para atualizar veículo por ID: Parâmetro de rota para o ID do veículo (From Route)
-// DTO (Data Transfer Object) para receber os dados atualizados do veículo (From Body)
-// Receber o serviço de veículo por injeção de dependência.
+// Rota para atualizar veículo por ID: Parâmetro de rota para o ID do veículo, DTO (Data Transfer Object) para receber os dados atualizados do veículo e o serviço de veículo injetado.
 vehicleGroup.MapPut("/{id}", (int id, VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle) =>
 {
     // Busca o veículo existente no banco de dados pelo ID
@@ -219,7 +306,7 @@ vehicleGroup.MapPut("/{id}", (int id, VehicleDTO vehicleDTO, IServiceVehicle ser
     return Results.StatusCode(500);
 });
 
-// Rota para deletar veículo por ID: Parâmetro de rota para o ID do veículo (From Route) e serviço de veículo injetado.
+// Rota para deletar veículo por ID: Parâmetro de rota para o ID do veículo e serviço de veículo injetado.
 vehicleGroup.MapDelete("/{id}", (int id, IServiceVehicle serviceVehicle) =>
 {
     var vehicle = serviceVehicle.GetById(id);

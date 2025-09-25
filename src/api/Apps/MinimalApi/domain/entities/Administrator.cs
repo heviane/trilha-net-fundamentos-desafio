@@ -42,8 +42,14 @@ namespace MinimalApi.Domain.Entities
         /// <param name="perfil">O perfil do administrador.</param>
         public Administrator(string id, string email, string password, string perfil)
         {
-            // TODO: Validações podem ser adicionadas aqui... (ex: e-mail em formato válido)
             this.Id = id;
+            this.Email = email;
+            this.Password = password;
+            this.Perfil = perfil;
+        }
+
+        public Administrator(string email, string password, string perfil)
+        {
             this.Email = email;
             this.Password = password;
             this.Perfil = perfil;
