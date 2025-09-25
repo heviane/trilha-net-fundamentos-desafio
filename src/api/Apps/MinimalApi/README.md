@@ -78,3 +78,5 @@ Além dos padrões de qualidade, as seguintes funcionalidades estão no radar pa
 
 - [ ] Garantir que a senha do Administrator seja armazenada de forma segura no banco de dados, em vez de texto puro.
 - [ ] Desacoplar as classes de serviço do DbContext usando o padrão de repositório.
+- [ ] Criar endpoint para cadastrar uma lista de veículos.
+- [ ] Ajustar o endpoint getAll para retornar a qtde total de veiculos, qtde total de páginas.
