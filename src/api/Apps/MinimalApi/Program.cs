@@ -13,17 +13,46 @@ using MinimalApi.Domain.ModelViews;
 using MinimalApi.Domain.Services;
 using MinimalApi.Infrastructure.Db;
 using MinimalApi.Domain.Enums;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Net.Http.Headers;
+using System.ComponentModel.DataAnnotations;
 
 
 #region Builder
 // Criação do builder da aplicação
 var builder = WebApplication.CreateBuilder(args);
 
-// escopo de injeção de dependência
+// Configuração da autenticação JWT
+var key = builder.Configuration.GetSection("Jwt").ToString();
+if (string.IsNullOrEmpty(key)) key = "123456";
+
+builder.Services
+.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(option =>
+{
+    option.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateLifetime = true,
+        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(
+            System.Text.Encoding.UTF8.GetBytes(key)
+        )
+    };
+});
+
+builder.Services.AddAuthorization();
+
+// Configuração dos serviços da aplicação
 builder.Services.AddScoped<IServiceAdministrator, ServiceAdministrator>();
 builder.Services.AddScoped<IServiceVehicle, ServiceVehicle>();
 
-// Configuração do contexto do banco de dados
+// Configuração do banco de dados
 builder.Services.AddDbContext<DbContexto>(options =>
 {
     options.UseMySql(
@@ -64,6 +93,48 @@ app.MapGet("/", (HttpContext context) =>
 #endregion
 
 #region Administrators
+
+string GenerateJwtToken(Administrator administrator)
+{
+    if (string.IsNullOrEmpty(key)) return string.Empty;
+
+    var securityKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(key));
+    var credentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+    var claims = new List<Claim>() //new[]
+    {
+        new System.Security.Claims.Claim("Email", administrator.Email),
+        new System.Security.Claims.Claim("Perfil", administrator.Perfil.ToString()),
+    };
+    var token = new JwtSecurityToken(
+        claims: claims,
+        expires: DateTime.Now.AddDays(1),
+        signingCredentials: credentials
+    );
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+
+// Rota para login do administrador: DTO (Data Transfer Object) para receber login e senha do administrador e serviço de administrador injetado.
+app.MapPost("/Administrators/login", (LoginDTO loginDTO, IServiceAdministrator serviceAdministrator) =>
+{
+    var adm = serviceAdministrator.Login(loginDTO);
+
+    if (adm != null)
+    {
+        string token = GenerateJwtToken(adm);
+        return Results.Ok(new LoginAdm
+        {
+            Email = adm.Email,
+            Perfil = adm.Perfil.ToString(),
+            Token = token
+        });
+    }
+    else
+    {
+        return Results.Unauthorized();
+    }
+}).WithTags("Administrators");
 
 // Rota para cadastrar um administrador: DTO (Data Transfer Object) para receber os dados do administrador e serviço de administrador injetado.
 app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdministrator serviceAdministrator) =>
@@ -115,7 +186,7 @@ app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdmin
         Perfil = administrator.Perfil.ToString()
     });
 
-}).WithTags("Administrators");
+}).RequireAuthorization().WithTags("Administrators");
 
 // Rota para listar administradores com paginação: Query Parameters para página atual e serviço de administrador injetado.
 app.MapGet("/Administrators", (int? CurrentPage, IServiceAdministrator serviceAdministrator) =>
@@ -137,7 +208,7 @@ app.MapGet("/Administrators", (int? CurrentPage, IServiceAdministrator serviceAd
     // Retorna a lista de administradores com status 200 OK
     return Results.Ok(adms);
 
-}).WithTags("Administrators");
+}).RequireAuthorization().WithTags("Administrators");
 
 // Rota para buscar administrador por ID: Parâmetro de rota para o ID do administrador e serviço de administrador injetado.
 app.MapGet("/Administrators/{id}", (string id, IServiceAdministrator serviceAdministrator) =>
@@ -151,7 +222,7 @@ app.MapGet("/Administrators/{id}", (string id, IServiceAdministrator serviceAdmi
         Perfil = administrator.Perfil.ToString()
     }) : Results.NotFound();
 
-}).WithTags("Administrators");
+}).RequireAuthorization().WithTags("Administrators");
 
 // Rota para deletar administrador por ID: Parâmetro de rota para o ID do administrador e serviço de administrador injetado.
 app.MapDelete("/Administrators/{id}", (string id, IServiceAdministrator serviceAdministrator) =>
@@ -167,20 +238,7 @@ app.MapDelete("/Administrators/{id}", (string id, IServiceAdministrator serviceA
     {
         return Results.NotFound();
     }
-}).WithTags("Administrators");
-
-// Rota para login do administrador: DTO (Data Transfer Object) para receber login e senha do administrador e serviço de administrador injetado.
-app.MapPost("/Administrators/login", (LoginDTO loginDTO, IServiceAdministrator serviceAdministrator) =>
-{
-    if (serviceAdministrator.Login(loginDTO) != null)
-    {
-        return Results.Ok("Login successful!");
-    }
-    else
-    {
-        return Results.Unauthorized();
-    }
-}).WithTags("Administrators");
+}).RequireAuthorization().WithTags("Administrators");
 #endregion
 
 #region Vehicles
@@ -249,21 +307,21 @@ vehicleGroup.MapPost("/", (VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle
 
     // Retorna a resposta com o status 201 Created e o veículo criado
     return Results.Created($"/Vehicles/{vehicle.Id}", vehicle);
-});
+}).RequireAuthorization();
 
 // Rota para listar veículos com paginação: Query Parameters para página atual e serviço de veículo injetado.
 vehicleGroup.MapGet("/", (int? CurrentPage, IServiceVehicle serviceVehicle) =>
 {
     var vehicles = serviceVehicle.GetAll(CurrentPage ?? 1);
     return Results.Ok(vehicles); // Retorna a lista de veículos com status 200 OK
-});
+}).RequireAuthorization();
 
 // Rota para buscar veículo por ID: Parâmetro de rota para o ID do veículo e serviço de veículo injetado.
 vehicleGroup.MapGet("/{id}", (int id, IServiceVehicle serviceVehicle) =>
 {
     var vehicle = serviceVehicle.GetById(id);
     return vehicle != null ? Results.Ok(vehicle) : Results.NotFound();
-});
+}).RequireAuthorization();
 
 // Rota para atualizar veículo por ID: Parâmetro de rota para o ID do veículo, DTO (Data Transfer Object) para receber os dados atualizados do veículo e o serviço de veículo injetado.
 vehicleGroup.MapPut("/{id}", (int id, VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle) =>
@@ -304,7 +362,7 @@ vehicleGroup.MapPut("/{id}", (int id, VehicleDTO vehicleDTO, IServiceVehicle ser
 
     // Adiciona um retorno padrão para garantir que todos os caminhos retornem um valor
     return Results.StatusCode(500);
-});
+}).RequireAuthorization();
 
 // Rota para deletar veículo por ID: Parâmetro de rota para o ID do veículo e serviço de veículo injetado.
 vehicleGroup.MapDelete("/{id}", (int id, IServiceVehicle serviceVehicle) =>
@@ -320,14 +378,16 @@ vehicleGroup.MapDelete("/{id}", (int id, IServiceVehicle serviceVehicle) =>
     {
         return Results.NotFound(); // Retorna 404 Not Found se o veículo não for encontrado
     }
-});
-
+}).RequireAuthorization();
 #endregion
 
 #region App
-// Configure the HTTP request pipeline
+// Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 #endregion
