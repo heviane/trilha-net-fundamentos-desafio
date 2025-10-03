@@ -20,6 +20,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Net.Http.Headers;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.OpenApi.Models;
 
 
 #region Builder
@@ -42,7 +43,9 @@ builder.Services
         ValidateLifetime = true,
         IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(
             System.Text.Encoding.UTF8.GetBytes(key)
-        )
+        ),
+        ValidateIssuer = false,
+        ValidateAudience = false
     };
 });
 
@@ -63,7 +66,32 @@ builder.Services.AddDbContext<DbContexto>(options =>
 
 // Configuração do Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme: Insira somente o token, sem o 'Bearer' prefixo."
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
 
 // Construção da aplicação
 var app = builder.Build();
@@ -89,7 +117,7 @@ app.MapGet("/", (HttpContext context) =>
     var docUrl = $"{context.Request.Scheme}://{context.Request.Host}/swagger";
     var home = new Home("Welcome to the Minimal API", docUrl);
     return Results.Json(home);
-}).WithTags("Home");
+}).AllowAnonymous().WithTags("Home");
 #endregion
 
 #region Administrators
@@ -134,7 +162,7 @@ app.MapPost("/Administrators/login", (LoginDTO loginDTO, IServiceAdministrator s
     {
         return Results.Unauthorized();
     }
-}).WithTags("Administrators");
+}).AllowAnonymous().WithTags("Administrators");
 
 // Rota para cadastrar um administrador: DTO (Data Transfer Object) para receber os dados do administrador e serviço de administrador injetado.
 app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdministrator serviceAdministrator) =>

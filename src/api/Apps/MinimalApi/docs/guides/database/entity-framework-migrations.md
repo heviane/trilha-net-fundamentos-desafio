@@ -31,6 +31,6 @@ dotnet ef database update --project src/api/Apps/MinimalApi
 O que este comando faz?
 
 - `dotnet ef database update`: Pega a última migração que ainda não foi aplicada e a executa no banco de dados configurado na sua **appsettings.json**.
-- Após a execução, você pode verificar seu banco de dados MySQL. A tabela Administrators (e uma tabela de histórico de migrações chamada `__EFMigrationsHistory`) estarão lá!
+- Após a execução, você pode verificar seu banco de dados MySQL. As tabelas da sua aplicação (e uma tabela de histórico de migrações chamada `__EFMigrationsHistory`) estarão lá!
 
 > **PRONTO!** Migrations concluídas. Agora verifique o banco de dados [Guia para conectar-se ao Banco de dados](../database/connect-to-MySQL-database.md).

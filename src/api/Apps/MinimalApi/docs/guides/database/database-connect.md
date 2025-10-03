@@ -16,16 +16,27 @@ mysql -u root -p minimal_api_db
 ## MySQL in Docker
 
 ```bash
-# Verifique se o container MySQL está rodando
+# PASSO 1: Verifique se o container MySQL está rodando.
 docker ps
 
-# Execute o cliente MySQL dentro do container
-# Neste caso, o terminal irá pedir a senha (A senha não será exibida enquanto você digita)
-docker exec -it minimalapi-mysql mysql -u root -p
+# PASSO 2: Inicie o container MySQL se ele não estiver rodando.
+  ## Iniciar o container MySQL pela primeira vez e configurar a variavel de ambiente para a senha root.
+  docker run -d \
+  -p 3306:3306 \
+  --name mysql-dev \
+  -e MYSQL_ROOT_PASSWORD='heviane' \
+  mysql:latest
 
-# Este método não é recomendado porque sua senha fica registrada no histórico de comandos do terminal.
-# Use somente em ambiente de desenvolvimento
-docker exec -it minimalapi-mysql mysql -u root -p'heviane'
+  ## Iniciar o container MySQL após a primeira vez (já configurado a variavel de ambiente para a senha root).
+  docker run -d --name mysql-dev mysql 
+
+# PASSO 3: Execute o cliente MySQL dentro do container.
+  ## Neste caso, o terminal irá pedir a senha (A senha não será exibida enquanto você digita).
+  docker exec -it mysql-dev mysql -u root -p
+
+  ## Neste caso, use somente em ambiente de desenvolvimento.
+  ## >> Este método não é recomendado porque sua senha fica registrada no histórico de comandos do terminal.
+  docker exec -it mysql-dev mysql -u root -p'heviane'
 ```
 
 - **`docker exec`**: Comando para executar algo dentro de um container.
