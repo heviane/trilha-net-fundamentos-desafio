@@ -17,21 +17,23 @@ namespace MinimalApi.Domain.Entities
         /// </summary>
         [Required]
         [StringLength(255)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// Senha do administrador.
         /// </summary>
         [Required]
         [StringLength(20)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         /// <summary>
         /// Perfil do administrador (ex: "Admin", "SuperAdmin").
         /// </summary>
         [Required]
         [StringLength(10)]
-        public string Perfil { get; set; }
+        public string? Perfil { get; set; }
+
+        public Administrator() { }
 
         /// <summary>
         /// Construtor para garantir que um Administrador seja sempre criado com um e-mail, senha e perfil válidos.

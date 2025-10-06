@@ -51,3 +51,16 @@ No diretório da solução:
 # Build da aplicação completa
 dotnet build
 ```
+
+## Passo 4: Executar
+
+No diretório do Projeto de Teste:
+
+```bash
+dotnet test
+
+dotnet run test
+
+# Test summary: total: 1, failed: 0, succeeded: 1, skipped: 0, duration: 0.5s
+# Build succeeded with 1 warning(s) in 1.5s
+```
