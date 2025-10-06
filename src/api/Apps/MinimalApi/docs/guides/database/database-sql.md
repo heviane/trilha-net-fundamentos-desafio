@@ -16,10 +16,10 @@ COLLATE utf8mb4_unicode_ci;
 USE minimal_api_db;
 SHOW TABLES;
 
-desc Administrators;
-desc Vehicles;
+DESC Administrators;
+DESC Vehicles;
 
-select * from Administrators;
-select * from Vehicles;
+SELECT * FROM Administrators;
+SELECT * FROM Vehicles;
 exit;
 ```

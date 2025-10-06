@@ -11,8 +11,8 @@ using MinimalApi.Infrastructure.Db;
 namespace MinimalApi.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20250924123542_VehicleMigration")]
-    partial class VehicleMigration
+    [Migration("20251006120156_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace MinimalApi.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("MinimalApi.domain.entities.Administrator", b =>
+            modelBuilder.Entity("MinimalApi.Domain.Entities.Administrator", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -58,7 +58,7 @@ namespace MinimalApi.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MinimalApi.domain.entities.Vehicle", b =>
+            modelBuilder.Entity("MinimalApi.Domain.Entities.Vehicle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

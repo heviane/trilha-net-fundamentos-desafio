@@ -13,6 +13,7 @@ using MinimalApi.Domain.ModelViews;
 using MinimalApi.Domain.Services;
 using MinimalApi.Infrastructure.Db;
 using MinimalApi.Domain.Enums;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
@@ -21,7 +22,7 @@ using System.Security.Claims;
 using System.Net.Http.Headers;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.OpenApi.Models;
-
+using Microsoft.AspNetCore.Authorization;
 
 #region Builder
 // Criação do builder da aplicação
@@ -133,6 +134,7 @@ string GenerateJwtToken(Administrator administrator)
     {
         new System.Security.Claims.Claim("Email", administrator.Email),
         new System.Security.Claims.Claim("Perfil", administrator.Perfil.ToString()),
+        new System.Security.Claims.Claim(ClaimTypes.Role, administrator.Perfil.ToString()),
     };
     var token = new JwtSecurityToken(
         claims: claims,
@@ -184,11 +186,11 @@ app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdmin
     {
         messages.Messages.Add("Login is required.");
     }
-    if (administratorDTO.Perfil == null || administratorDTO.Perfil == 0)
+    if (administratorDTO.Perfil == null || !Enum.IsDefined(typeof(UserPerfil), administratorDTO.Perfil))
     {
         // Gera a lista de perfis válidos dinamicamente a partir do enum
         var validProfiles = string.Join(", ", Enum.GetNames(typeof(UserPerfil)).Select(p => $"'{p}'"));
-        messages.Messages.Add($"Perfil cannot be null. Valid values are: {validProfiles}.");
+        messages.Messages.Add($"Perfil is invalid. Valid values are: {validProfiles}.");
     }
 
     // Se houver mensagens de erro, retorna 400 Bad Request com os erros
@@ -214,7 +216,9 @@ app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdmin
         Perfil = administrator.Perfil.ToString()
     });
 
-}).RequireAuthorization().WithTags("Administrators");
+})
+.WithTags("Administrators")
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Admin" });
 
 // Rota para listar administradores com paginação: Query Parameters para página atual e serviço de administrador injetado.
 app.MapGet("/Administrators", (int? CurrentPage, IServiceAdministrator serviceAdministrator) =>
@@ -236,7 +240,10 @@ app.MapGet("/Administrators", (int? CurrentPage, IServiceAdministrator serviceAd
     // Retorna a lista de administradores com status 200 OK
     return Results.Ok(adms);
 
-}).RequireAuthorization().WithTags("Administrators");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Admin" })
+.WithTags("Administrators");
 
 // Rota para buscar administrador por ID: Parâmetro de rota para o ID do administrador e serviço de administrador injetado.
 app.MapGet("/Administrators/{id}", (string id, IServiceAdministrator serviceAdministrator) =>
@@ -250,7 +257,10 @@ app.MapGet("/Administrators/{id}", (string id, IServiceAdministrator serviceAdmi
         Perfil = administrator.Perfil.ToString()
     }) : Results.NotFound();
 
-}).RequireAuthorization().WithTags("Administrators");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Admin" })
+.WithTags("Administrators");
 
 // Rota para deletar administrador por ID: Parâmetro de rota para o ID do administrador e serviço de administrador injetado.
 app.MapDelete("/Administrators/{id}", (string id, IServiceAdministrator serviceAdministrator) =>
@@ -266,7 +276,10 @@ app.MapDelete("/Administrators/{id}", (string id, IServiceAdministrator serviceA
     {
         return Results.NotFound();
     }
-}).RequireAuthorization().WithTags("Administrators");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Admin" })
+.WithTags("Administrators");
 #endregion
 
 #region Vehicles
@@ -308,7 +321,8 @@ static ValidationErrors validDTO(VehicleDTO vehicleDTO)
 }
 
 // Agrupa os endpoints de veículos sob o prefixo "/Vehicles" e a tag "Vehicles" no Swagger
-var vehicleGroup = app.MapGroup("/Vehicles").WithTags("Vehicles");
+var vehicleGroup = app.MapGroup("/Vehicles").WithTags("Vehicles")
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Admin, User" });
 
 // Rota para criar veículo: DTO (Data Transfer Object) para receber os dados do veículo e serviço de veículo injetado
 vehicleGroup.MapPost("/", (VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle) =>
@@ -335,21 +349,21 @@ vehicleGroup.MapPost("/", (VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle
 
     // Retorna a resposta com o status 201 Created e o veículo criado
     return Results.Created($"/Vehicles/{vehicle.Id}", vehicle);
-}).RequireAuthorization();
+});
 
 // Rota para listar veículos com paginação: Query Parameters para página atual e serviço de veículo injetado.
 vehicleGroup.MapGet("/", (int? CurrentPage, IServiceVehicle serviceVehicle) =>
 {
     var vehicles = serviceVehicle.GetAll(CurrentPage ?? 1);
     return Results.Ok(vehicles); // Retorna a lista de veículos com status 200 OK
-}).RequireAuthorization();
+});
 
 // Rota para buscar veículo por ID: Parâmetro de rota para o ID do veículo e serviço de veículo injetado.
 vehicleGroup.MapGet("/{id}", (int id, IServiceVehicle serviceVehicle) =>
 {
     var vehicle = serviceVehicle.GetById(id);
     return vehicle != null ? Results.Ok(vehicle) : Results.NotFound();
-}).RequireAuthorization();
+});
 
 // Rota para atualizar veículo por ID: Parâmetro de rota para o ID do veículo, DTO (Data Transfer Object) para receber os dados atualizados do veículo e o serviço de veículo injetado.
 vehicleGroup.MapPut("/{id}", (int id, VehicleDTO vehicleDTO, IServiceVehicle serviceVehicle) =>
@@ -390,7 +404,7 @@ vehicleGroup.MapPut("/{id}", (int id, VehicleDTO vehicleDTO, IServiceVehicle ser
 
     // Adiciona um retorno padrão para garantir que todos os caminhos retornem um valor
     return Results.StatusCode(500);
-}).RequireAuthorization();
+});
 
 // Rota para deletar veículo por ID: Parâmetro de rota para o ID do veículo e serviço de veículo injetado.
 vehicleGroup.MapDelete("/{id}", (int id, IServiceVehicle serviceVehicle) =>
@@ -406,7 +420,7 @@ vehicleGroup.MapDelete("/{id}", (int id, IServiceVehicle serviceVehicle) =>
     {
         return Results.NotFound(); // Retorna 404 Not Found se o veículo não for encontrado
     }
-}).RequireAuthorization();
+});
 #endregion
 
 #region App

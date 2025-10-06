@@ -29,3 +29,6 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
   - **Camada de Serviço**: Criada a interface `IServiceAdministrator` e a implementação `ServiceAdministrator` para desacoplar a lógica de negócio do endpoint.
   - **Endpoint de Login**: Implementado o endpoint `POST /login` que recebe um `LoginDTO` e utiliza a camada de serviço para autenticar as credenciais do administrador contra o banco de dados.
   
+- **Autorização por Perfil (Role-based)**:
+  - Adicionada autorização baseada em perfis (`Roles`) nos endpoints.
+  - Incluído o `ClaimTypes.Role` no token JWT para diferenciar os acessos de `Admin` e `User`, permitindo um controle de acesso granular.
