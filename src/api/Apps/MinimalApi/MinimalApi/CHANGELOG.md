@@ -10,6 +10,10 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ### Added
 
+- **Estrutura de Projeto e Testes**:
+  - Criada uma solução (`.sln`) dedicada para a `MinimalApi` para isolar seus projetos (API, Domain, Infrastructure).
+  - Adicionado um projeto de testes (`MinimalApi.Tests`) utilizando o template `mstest`, configurado para testar a aplicação.
+
 - **Projeto e Estrutura Inicial**:
   - Criado novo projeto de API RESTful com o template **Minimal API** do **.NET 9**.
   - Adicionado endpoint `GET /` para verificação inicial da API.
