@@ -115,3 +115,8 @@ appsettings.Development.json
 ## Pastas de build do .NET
 bin/
 obj/
+
+## Pasta criada pela ferramenta de automação de build FAKE (F# Make)
+## FAKE é uma ferramenta popular no ecossistema .NET, usada para automatizar tarefas como compilação, execução de testes, empacotamento de aplicações, entre outras.
+.fake
+
