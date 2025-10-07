@@ -1,14 +1,14 @@
-version: "3.8"
-
 services:
   # Define o serviço do banco de dados MySQL
   mysql_db:
-    image: mysql:latest
+    image: mysql:8.0 # Fixa a versão para evitar upgrades inesperados
     container_name: minimalapi-mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: heviane # A senha que você definiu no appsettings
-      MYSQL_DATABASE: minimal_api_db # O nome do banco de dados
+      MYSQL_ROOT_PASSWORD: "admin" # Senha para o superusuário root
+      MYSQL_DATABASE: "minimalapi_test_db" # Cria este banco de dados na inicialização
+      MYSQL_USER: "test_user" # Cria este usuário para os testes
+      MYSQL_PASSWORD: "test_password" # Define a senha para o novo usuário
     ports:
       - "3306:3306" # Mapeia a porta do container para a sua máquina
     volumes:

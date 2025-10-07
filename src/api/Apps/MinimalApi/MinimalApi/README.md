@@ -1,24 +1,26 @@
 # MinimalApi API
 
 <p align="center">
+  <a href="https://github.com/heviane/trilha-net-fundamentos-desafio/actions/workflows/dotnet-ci.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/heviane/trilha-net-fundamentos-desafio/dotnet-ci.yml?branch=main&style=for-the-badge&label=CI"></a>
   <img src="https://img.shields.io/badge/.NET-9.0-blueviolet?style=for-the-badge&logo=.net" alt=".NET 9.0">
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Changelog-Keep%20a%20Changelog-blue?style=for-the-badge" alt="Changelog"></a>
-  <img src="https://img.shields.io/badge/Template-Minimal_API-blue?style=for-the-badge&logo=c-sharp" alt="Minimal API">
   <img src="https://img.shields.io/badge/Docs-Swagger-green?style=for-the-badge&logo=swagger" alt="Swagger">
 </p>
 
-`MinimalApi` é um projeto de API RESTful simples, construído com .NET. Seu objetivo é servir como exemplo de uma API com funcionalidades básicas, como endpoints, manipulação de DTOs e acesso a dados com Entity Framework Core.
+`MinimalApi` é um projeto de API RESTful construído com **.NET 9**, demonstrando uma arquitetura limpa com funcionalidades essenciais como autenticação JWT, autorização baseada em perfis (`Roles`) e persistência de dados com **Entity Framework Core** e **MySQL**.
 
 ## ✨ Funcionalidades
 
-- **Arquitetura**: API criada a partir do template **Minimal API** do **.NET**.
-  - Estrutura do Projeto:
-    - infrastructure: conexão com banco de dados, etc.
-    - domain: regras de negócio, etc.
-      - entities: 
-- **Endpoints**: Inclui exemplos de `GET` e `POST` com um DTO (`LoginDTO`).
+- **Arquitetura**: API criada com o template **Minimal API**, organizada em camadas (Domínio, Infraestrutura, Aplicação) para separação de responsabilidades.
+- **Autenticação e Autorização**:
+  - Endpoint `POST /login` para autenticação de usuários.
+  - Geração de **Tokens JWT** para acesso seguro aos endpoints.
+  - Controle de acesso granular baseado em perfis (`Roles`) como `Admin` e `User`.
 - **Documentação**: Geração automática de documentação interativa com **[Swagger (OpenAPI)](https://swagger.io/)**.
-- **Acesso a Dados**: Utiliza **Entity Framework Core** com um provedor de banco de dados em memória para um exemplo de autenticação.
+- **Persistência de Dados**:
+  - Utiliza **Entity Framework Core** para mapeamento objeto-relacional.
+  - Integração com banco de dados **MySQL 8.0**, gerenciado por **Docker Compose**.
+  - Migrations e Seed de dados para inicialização do banco.
 
 ---
 

@@ -13,17 +13,17 @@ Vamos fazer isso usando o docker-compose, que é a ferramenta ideal para gerenci
 No diretório do projeto, crie um novo arquivo chamado `docker-compose.yml` com o seguinte conteúdo.
 
 ```yml
-version: '3.8'
-
 services:
   # Define o serviço do banco de dados MySQL
   mysql_db:
-    image: mysql:8.0
+    image: mysql:8.0 # Fixa a versão para evitar upgrades inesperados
     container_name: minimalapi-mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: heviane # A senha que você definiu no appsettings
-      MYSQL_DATABASE: minimal_api_db # O nome do banco de dados
+      MYSQL_ROOT_PASSWORD: "admin" # Senha para o superusuário root
+      MYSQL_DATABASE: "minimalapi_test_db" # Cria este banco de dados na inicialização
+      MYSQL_USER: "test_user" # Cria este usuário para os testes
+      MYSQL_PASSWORD: "test_password" # Define a senha para o novo usuário
     ports:
       - "3306:3306" # Mapeia a porta do container para a sua máquina
     volumes:
@@ -39,3 +39,9 @@ O que este arquivo faz?
 - Configura as variáveis de ambiente com a senha (heviane) e o nome do banco de dados (minimal_api_db) que você já tem no seu `appsettings.json`.
 - Expõe a porta 3306 do container na porta 3306 da sua máquina (localhost), permitindo que sua API se conecte.
 - Cria um "volume" chamado `mysql_data` para que os dados do banco de dados sejam salvos em disco e não se percam se o container for parado.
+
+## Como executar
+
+```bash
+docker-compose up -d
+```

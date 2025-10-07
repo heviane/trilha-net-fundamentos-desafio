@@ -1,4 +1,4 @@
-# Changelog
+# Changelog - MinimalApi
 
 Todas as alterações notáveis a este projeto serão documentadas neste arquivo.
 
@@ -6,35 +6,36 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ---
 
-## [Unreleased]
+## [0.1.0] - 2025-10-07
 
 ### Added
 
-- **Estrutura de Projeto e Testes**:
-  - Criada uma solução (`.sln`) dedicada para a `MinimalApi` para isolar seus projetos (API, Domain, Infrastructure).
-  - Adicionado um projeto de testes (`MinimalApi.Tests`) utilizando o template `mstest`, configurado para testar a aplicação.
-  - Implementados testes de unidade para a entidade `Administrator`, validando a criação e o estado inicial do objeto.
-  - Implementado teste de serviço para `ServiceAdministrator`, validando a funcionalidade de criação de um administrador em um banco de dados em memória.
+- **Arquitetura e Estrutura do Projeto**
+  - Projeto criado com o template **.NET 9 Minimal API**.
+  - Estrutura de pastas organizada para separar Domínio, Infraestrutura e Aplicação.
+  - Adicionado suporte ao **Swagger (OpenAPI)** para documentação interativa da API.
 
-- **Projeto e Estrutura Inicial**:
-  - Criado novo projeto de API RESTful com o template **Minimal API** do **.NET 9**.
-  - Adicionado endpoint `GET /` para verificação inicial da API.
-  - Integrado **Swagger (OpenAPI)** para geração de documentação interativa.
-  - Configurado o `launch.json` do VS Code para iniciar o Swagger automaticamente durante a depuração.
-
-- **Persistência de Dados com EF Core e MySQL**:
-  - **Docker**: Adicionado `docker-compose.yml` para provisionar um banco de dados **MySQL 8.0** em um container, com volumes para persistência de dados.
+- **Persistência de Dados com EF Core e MySQL**
+  - **Docker**: Configurado `docker-compose.yml` para provisionar um banco de dados **MySQL 8.0**, garantindo um ambiente de desenvolvimento consistente e persistente.
   - **Entity Framework Core**:
-    - Configurado o EF Core para acesso a dados, incluindo a string de conexão no `appsettings.json`.
-    - Criada a entidade `Administrator` para representar o usuário e o `DbContexto` para gerenciar a sessão com o banco.
+    - Integrado o EF Core para mapeamento objeto-relacional (ORM).
+    - Criada a entidade `Administrator` e o `DbContexto` para gerenciar a conexão com o banco.
   - **Migrations e Seed**:
-    - Utilizada a ferramenta `dotnet-ef` para criar uma migração que gera a tabela `Administrators` no banco de dados.
-    - Implementado um **Seed** de dados (`HasData`) para popular a tabela com um usuário administrador padrão na primeira migração.
+    - Criada a migração inicial (`InitialCreate`) para gerar o schema do banco.
+    - Implementado um **Seed** de dados (`HasData`) para popular a tabela `Administrators` com um usuário padrão.
 
-- **Funcionalidade de Autenticação**:
-  - **Camada de Serviço**: Criada a interface `IServiceAdministrator` e a implementação `ServiceAdministrator` para desacoplar a lógica de negócio do endpoint.
-  - **Endpoint de Login**: Implementado o endpoint `POST /login` que recebe um `LoginDTO` e utiliza a camada de serviço para autenticar as credenciais do administrador contra o banco de dados.
-  
-- **Autorização por Perfil (Role-based)**:
-  - Adicionada autorização baseada em perfis (`Roles`) nos endpoints.
-  - Incluído o `ClaimTypes.Role` no token JWT para diferenciar os acessos de `Admin` e `User`, permitindo um controle de acesso granular.
+- **Autenticação e Autorização**
+  - **Endpoint de Login**: Implementado o endpoint `POST /login` para autenticar usuários.
+  - **Camada de Serviço**: Criada a camada de serviço (`ServiceAdministrator`) para desacoplar a lógica de negócio dos endpoints.
+  - **JWT (JSON Web Tokens)**: Adicionada geração de token JWT no login bem-sucedido, contendo claims de identificação.
+  - **Autorização por Perfil (Role-based)**: Implementada autorização baseada em perfis (`Roles`) nos endpoints, utilizando o `ClaimTypes.Role` para controle de acesso granular (`Admin`, `User`).
+
+- **Testes Automatizados**
+  - **Projeto de Teste**: Criado o projeto `MinimalApiTest` com o framework **MSTest**.
+  - **Testes de Unidade/Serviço**:
+    - Implementados testes para a camada de serviço (`AdministratorServiceTest`).
+    - Utilizado o provedor de banco de dados **em memória** do EF Core para testes rápidos e isolados.
+  - **Testes de Integração/Persistência**:
+    - Implementados testes (`AdministratorServiceTestDb`) que validam a integração com um banco de dados **MySQL real**, gerenciado pelo Docker.
+    - Configurado `appsettings.testing.json` para gerenciar a string de conexão do ambiente de teste.
+    - Implementado ciclo de vida de testes com `[TestInitialize]` e `[TestCleanup]` para garantir o isolamento (criação e destruição do banco a cada teste).
