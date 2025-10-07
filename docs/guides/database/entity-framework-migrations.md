@@ -2,12 +2,14 @@
 
 As migrations são uma maneira de aplicar mudanças incrementais ao esquema do banco de dados, mantendo os dados existentes intactos.
 
-## 1. Criar
-
-Execute o seguinte comando no terminal, na pasta raiz do seu repositório:
+## 1. Criar a Migration
 
 ```bash
+# Na pasta raiz do repositório:
 dotnet ef migrations add InitialCreate --project src/api/Apps/MinimalApi/MinimalApi
+
+# Na pasta raiz do projeto:
+dotnet ef migrations add InitialCreate
 ```
 
 O que este comando faz?
@@ -18,14 +20,16 @@ O que este comando faz?
 
 Após executar, você verá uma nova pasta **Migrations** dentro do projeto MinimalApi, contendo arquivos que descrevem como criar a tabela Administrators.
 
-## 2. Aplicar
+## 2. Aplicar a Migration
 
 O último passo é executar o "plano" que acabamos de criar contra o seu banco de dados MySQL.
 
-Execute este comando, também na pasta raiz do repositório:
-
 ```bash
+# Na pasta raiz do repositório:
 dotnet ef database update --project src/api/Apps/MinimalApi/MinimalApi
+
+# Na pasta raiz do projeto:
+dotnet ef database update
 ```
 
 O que este comando faz?
@@ -34,5 +38,4 @@ O que este comando faz?
 - Após a execução, você pode verificar seu banco de dados MySQL. As tabelas da sua aplicação (e uma tabela de histórico de migrações chamada `__EFMigrationsHistory`) estarão lá!
 
 > **PRONTO!** Migrations concluídas. Agora verifique o banco de dados [Guia para conectar-se ao Banco de dados](../database/connect-to-MySQL-database.md).
->
 > **OBS:** Se criar um novo container, ou um databse novo, deve-se aplicar as migrations novamente.

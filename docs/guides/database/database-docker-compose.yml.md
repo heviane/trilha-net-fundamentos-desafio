@@ -36,12 +36,13 @@ volumes:
 O que este arquivo faz?
 
 - Define um serviço chamado `mysql_db` usando a imagem oficial do **MySQL 8.0**.
-- Configura as variáveis de ambiente com a senha (heviane) e o nome do banco de dados (minimal_api_db) que você já tem no seu `appsettings.json`.
-- Expõe a porta 3306 do container na porta 3306 da sua máquina (localhost), permitindo que sua API se conecte.
-- Cria um "volume" chamado `mysql_data` para que os dados do banco de dados sejam salvos em disco e não se percam se o container for parado.
 
 ## Como executar
+
+Certifique-se de estar no diretório do projeto, onde deve estar o arquivo `docker-compose.yml`:
 
 ```bash
 docker-compose up -d
 ```
+
+> **PRONTO!** Seu banco de dados MySQL agora está rodando em um container! Você pode pará-lo a qualquer momento com `docker-compose down`.

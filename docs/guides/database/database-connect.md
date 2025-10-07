@@ -13,7 +13,16 @@ mysql -u root -p minimal_api_db
   - **root**: É o superusuário padrão do MySQL.
 - **`-p`**: Significa senha.
 
-## MySQL in Docker
+## MySQL with Docker Compose: `docker-compose.yml`
+
+```bash
+docker-compose up -d
+```
+
+- **`up`**: Cria e inicia os serviços definidos no arquivo.
+- **`-d`**: (detached) Roda os containers em segundo plano.
+
+## MySQL with Docker CLI: `docker run` e `docker exec`
 
 ```bash
 # PASSO 1: Verifique se o container MySQL está rodando.
@@ -41,14 +50,5 @@ docker ps
 
 - **`docker exec`**: Comando para executar algo dentro de um container.
 - **`-it`**: Flags para modo interativo. Ele permite que você execute comandos dentro de um container em execução.
-
-## MySQL in Docker with Docker Compose: `docker-compose.yml`
-
-```bash
-docker-compose up -d
-```
-
-- **`up`**: Cria e inicia os serviços definidos no arquivo.
-- **`-d`**: (detached) Roda os containers em segundo plano.
 
 > **PRONTO!**

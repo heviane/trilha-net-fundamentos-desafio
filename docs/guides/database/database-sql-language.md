@@ -1,4 +1,4 @@
-# Run SQL commands
+# Principais comandos SQL
 
 Após conectar, você pode executar comandos SQL para interagir com seu banco de dados.
 

@@ -7,7 +7,7 @@ Para organizar o projeto e facilitar a adição de testes, criamos uma solução
 ```bash
 dotnet new sln -h
 
-# 1. Criar o arquivo de solução dentro da pasta /MinimalApi
+# 1. Criar o arquivo de solução
 dotnet new sln -n MinimalApi -o src/api/Apps/MinimalApi
 
 # 2. Adicionar os projetos existentes à solução
@@ -24,7 +24,7 @@ Dentro da Solução `/src/api/Apps/MinimalApi` execute os comandos:
 # Visualizar todos os templates disponiveis
 dotnet new list
 
-# Criar o projeto de testes
+# Criar o projeto de testes com o template "mstest"
 dotnet new mstest -o MinimalApiTest
 
 # Adicionar o projeto de testes à Solução
@@ -38,9 +38,6 @@ Dentro do projeto de Testes `/src/api/Apps/MinimalApi/MinimalApiTest` execute os
 ```bash
 # Adicionar a referencia ao projeto a ser testado no projeto de testes
 dotnet add reference ../MinimalApi/MinimalApi.csproj
-
-# Fará build da aplicação completa
-
 ```
 
 ## Passo 3: Build
@@ -58,9 +55,5 @@ No diretório do Projeto de Teste:
 
 ```bash
 dotnet test
-
 dotnet run test
-
-# Test summary: total: 1, failed: 0, succeeded: 1, skipped: 0, duration: 0.5s
-# Build succeeded with 1 warning(s) in 1.5s
 ```
