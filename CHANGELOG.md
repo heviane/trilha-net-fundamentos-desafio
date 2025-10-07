@@ -8,13 +8,14 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 
 ## [Unreleased]
 
+### Removed
+
+- **`src/api/Apps/MinimalApi/`**: Removido o projeto da API, que foi migrado para um repositório dedicado para melhor escalabilidade e manutenção.
+
 ### Added
 
 - **`src/console/Apps/HelloWorld/`**: Adicionado novo projeto de console `HelloWorld` para servir como exemplo e validar a nova estrutura de automação.
 - **`src/api/Apps/HelloWorld/`**: Adicionado novo projeto de API `HelloWorld` para servir como exemplo e validar a nova estrutura de automação.
-- **`src/api/Apps/MinimalApi/`**: Adicionado novo projeto de API `MinimalApi`.
-  - **Motivo**: Criar uma API RESTful com .NET 9 Minimal API, integrando EF Core, MySQL (via Docker) e autenticação básica.
-  - **Detalhes**: Para um log de alterações detalhado, consulte o **[CHANGELOG.md do projeto](./src/api/Apps/MinimalApi/CHANGELOG.md)**.
 
 ### Changed
 
