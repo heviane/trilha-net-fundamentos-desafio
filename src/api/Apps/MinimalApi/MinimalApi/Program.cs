@@ -132,9 +132,9 @@ string GenerateJwtToken(Administrator administrator)
 
     var claims = new List<Claim>() //new[]
     {
-        new System.Security.Claims.Claim("Email", administrator.Email),
-        new System.Security.Claims.Claim("Perfil", administrator.Perfil.ToString()),
-        new System.Security.Claims.Claim(ClaimTypes.Role, administrator.Perfil.ToString()),
+        new System.Security.Claims.Claim("Email", administrator.Email ?? string.Empty),
+        new System.Security.Claims.Claim("Perfil", administrator.Perfil ?? string.Empty),
+        new System.Security.Claims.Claim(ClaimTypes.Role, administrator.Perfil ?? string.Empty),
     };
     var token = new JwtSecurityToken(
         claims: claims,
@@ -155,8 +155,8 @@ app.MapPost("/Administrators/login", (LoginDTO loginDTO, IServiceAdministrator s
         string token = GenerateJwtToken(adm);
         return Results.Ok(new LoginAdm
         {
-            Email = adm.Email,
-            Perfil = adm.Perfil.ToString(),
+            Email = adm.Email ?? string.Empty,
+            Perfil = adm.Perfil ?? string.Empty,
             Token = token
         });
     }
@@ -178,13 +178,12 @@ app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdmin
     };
 
     // Validação simples dos dados recebidos
-    if (string.IsNullOrEmpty(administratorDTO.Email))
+    if (string.IsNullOrEmpty(administratorDTO.Email) || string.IsNullOrEmpty(administratorDTO.Password))
     {
-        messages.Messages.Add("Email is required.");
-    }
-    if (string.IsNullOrEmpty(administratorDTO.Password))
-    {
-        messages.Messages.Add("Login is required.");
+        if (string.IsNullOrEmpty(administratorDTO.Email))
+            messages.Messages.Add("Email is required.");
+        if (string.IsNullOrEmpty(administratorDTO.Password))
+            messages.Messages.Add("Password is required.");
     }
     if (administratorDTO.Perfil == null || !Enum.IsDefined(typeof(UserPerfil), administratorDTO.Perfil))
     {
@@ -201,9 +200,9 @@ app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdmin
 
     // Mapeia os dados do DTO para a entidade Administrator
     var administrator = new Administrator(
-        administratorDTO.Email,
-        administratorDTO.Password,
-        administratorDTO.Perfil?.ToString() ?? string.Empty
+        administratorDTO.Email!, // O '!' informa ao compilador que confiamos que não é nulo aqui
+        administratorDTO.Password!,
+        administratorDTO.Perfil.ToString()!
     );
 
     serviceAdministrator.Create(administrator);
@@ -212,8 +211,8 @@ app.MapPost("/Administrators", (AdministratorDTO administratorDTO, IServiceAdmin
     return Results.Created($"/Administrators/{administrator.Id}", new AdministratorModelView
     {
         Id = administrator.Id,
-        Email = administrator.Email,
-        Perfil = administrator.Perfil.ToString()
+        Email = administrator.Email ?? string.Empty,
+        Perfil = administrator.Perfil ?? string.Empty
     });
 
 })
@@ -233,8 +232,8 @@ app.MapGet("/Administrators", (int? CurrentPage, IServiceAdministrator serviceAd
         adms.Add(new AdministratorModelView
         {
             Id = administrator.Id,
-            Email = administrator.Email,
-            Perfil = administrator.Perfil.ToString()
+            Email = administrator.Email ?? string.Empty,
+            Perfil = administrator.Perfil ?? string.Empty
         });
     }
     // Retorna a lista de administradores com status 200 OK
@@ -253,8 +252,8 @@ app.MapGet("/Administrators/{id}", (string id, IServiceAdministrator serviceAdmi
     return administrator != null ? Results.Ok(new AdministratorModelView
     {
         Id = administrator.Id,
-        Email = administrator.Email,
-        Perfil = administrator.Perfil.ToString()
+        Email = administrator.Email ?? string.Empty,
+        Perfil = administrator.Perfil ?? string.Empty
     }) : Results.NotFound();
 
 })

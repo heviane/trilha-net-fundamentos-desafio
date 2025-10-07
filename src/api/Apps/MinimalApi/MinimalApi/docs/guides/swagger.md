@@ -6,6 +6,8 @@
 
 ```bash
 dotnet add package Microsoft.AspNetCore.OpenApi
+
+dotnet add src/api/Apps/MinimalApi/MinimalApi package Microsoft.AspNetCore.OpenApi
 ```
 
 ## Configurar no `Program.cs`

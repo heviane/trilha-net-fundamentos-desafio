@@ -11,24 +11,21 @@ public class AdministratorTest
 {
 
     [TestMethod]
-    public void TestGetSetProperties()
+    public void Should_Create_Administrator_With_Correct_Properties()
     {
+        // Arrange
+        var email = "teste@teste.com.br";
+        var password = "123456";
+        var perfil = "Admin";
 
-        // Cada teste é composto por 3 fases, o padrão Arrange, Act, Assert (Organizar, Agir, Verificar)
+        // Act
+        var adm = new Administrator(email, password, perfil);
 
-        // Arrange (variáveis e objetos)
-        var adm = new Administrator();
-
-        // Act (Ação a ser testada)
-        adm.Email = "teste@teste.com.br";
-        adm.Password = "123456";
-        adm.Perfil = "Admin";
-
-
-        // Assert (Verificações e validações)
-        Assert.AreEqual("teste@teste.com.br", adm.Email);
-        Assert.AreEqual("123456", adm.Password);
-        Assert.AreEqual("Admin", adm.Perfil);
-
+        // Assert
+        Assert.IsNotNull(adm);
+        Assert.AreEqual(email, adm.Email);
+        Assert.AreEqual(password, adm.Password);
+        Assert.AreEqual(perfil, adm.Perfil);
+        Assert.IsFalse(string.IsNullOrEmpty(adm.Id)); // Garante que um ID foi gerado
     }
 }

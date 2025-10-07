@@ -13,6 +13,8 @@ Todas as alterações notáveis a este projeto serão documentadas neste arquivo
 - **Estrutura de Projeto e Testes**:
   - Criada uma solução (`.sln`) dedicada para a `MinimalApi` para isolar seus projetos (API, Domain, Infrastructure).
   - Adicionado um projeto de testes (`MinimalApi.Tests`) utilizando o template `mstest`, configurado para testar a aplicação.
+  - Implementados testes de unidade para a entidade `Administrator`, validando a criação e o estado inicial do objeto.
+  - Implementado teste de serviço para `ServiceAdministrator`, validando a funcionalidade de criação de um administrador em um banco de dados em memória.
 
 - **Projeto e Estrutura Inicial**:
   - Criado novo projeto de API RESTful com o template **Minimal API** do **.NET 9**.

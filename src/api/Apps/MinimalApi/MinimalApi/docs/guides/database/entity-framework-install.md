@@ -7,9 +7,9 @@
 No terminal, na pasta raiz do repositório, execute os seguintes comandos para instalar os pacotes necessários:
 
 ```bash
-dotnet add src/api/Apps/MinimalApi package Microsoft.EntityFrameworkCore
-dotnet add src/api/Apps/MinimalApi package Microsoft.EntityFrameworkCore.Design
-dotnet add src/api/Apps/MinimalApi package Pomelo.EntityFrameworkCore.MySql
+dotnet add src/api/Apps/MinimalApi/MinimalApi package Microsoft.EntityFrameworkCore
+dotnet add src/api/Apps/MinimalApi/MinimalApi package Microsoft.EntityFrameworkCore.Design
+dotnet add src/api/Apps/MinimalApi/MinimalApi package Pomelo.EntityFrameworkCore.MySql
 ```
 
 ## Instalar a Ferramenta de Linha de Comando do EF Core

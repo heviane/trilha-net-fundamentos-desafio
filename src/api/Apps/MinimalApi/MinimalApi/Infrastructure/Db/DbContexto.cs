@@ -6,16 +6,22 @@ namespace MinimalApi.Infrastructure.Db;
 
 public class DbContexto : DbContext
 {
-    // Método construtor para poder receber uma injeção de dependência
-    private readonly IConfiguration _configurationAppSettings;
-    public DbContexto(IConfiguration configurationAppSettings)
+    /*
+        Toda a configuração do banco de dados está centralizada no Program.cs, que é a abordagem moderna e recomendada.
+        Isso deixa seu DbContext mais limpo e focado em seu propósito principal: mapear suas entidades.
+    */
+
+    // Construtor para ser usado nos testes e na injeção de dependência
+    public DbContexto(DbContextOptions<DbContexto> options) : base(options)
     {
-        _configurationAppSettings = configurationAppSettings;
     }
 
-    public DbSet<Administrator> Administrators { get; set; } = default!; // Representa a tabela Administrators no banco de dados
-    public DbSet<Vehicle> Vehicles { get; set; } = default!; // Representa a tabela Vehicles no banco de dados
+    // DbSets representam tabelas no banco de dados.
+    public DbSet<Administrator> Administrators { get; set; } = default!;
+    public DbSet<Vehicle> Vehicles { get; set; } = default!;
 
+    // Método OnModelCreating() com HasData para popular o banco com um administrador padrão. 
+    // Essa é uma ótima prática para garantir que sua aplicação tenha dados iniciais para testes e desenvolvimento (seeding).
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Administrator>().HasData(
@@ -26,25 +32,5 @@ public class DbContexto : DbContext
                 "Admin"
             )
         );
-    }
-
-    // Configura a conexão com o banco de dados MySQL
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            var connectionString = _configurationAppSettings.GetConnectionString("DefaultConnection")?.ToString();
-            if (!string.IsNullOrEmpty(connectionString))
-            {
-                optionsBuilder.UseMySql(
-                    connectionString,
-                    ServerVersion.AutoDetect(connectionString)
-                );
-            }
-            else
-            {
-                throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            }
-        }
     }
 }
